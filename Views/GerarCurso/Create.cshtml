@@ -1,0 +1,220 @@
+﻿@model Tcc_Senai.Models.GerarCurso
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+    <h4>GerarCurso</h4>
+    <hr />
+
+
+
+
+    <div class="row">
+        <div class="col-md-6">
+
+
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="DataInicio" class="control-label"></label>
+                        <input asp-for="DataInicio" class="form-control" />
+                        <span asp-validation-for="DataInicio" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DataFim" class="control-label"></label>
+                        <input asp-for="DataFim" class="form-control" />
+                        <span asp-validation-for="DataFim" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NomeModalidade" class="control-label"></label>
+                        <input asp-for="NomeModalidade" class="form-control" />
+                        <span asp-validation-for="NomeModalidade" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NomeCurso" class="control-label"></label>
+                        <input asp-for="NomeCurso" class="form-control" />
+                        <span asp-validation-for="NomeCurso" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card">
+
+
+
+
+                <div class="table-responsive table-scrollable" id="tabelaCurso">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>NOME</th>
+                                <th>SIGLA</th>
+                                <th>CARGA/H.</th>
+                                <th>VINCULAR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-primary btn-sm bg-info-700" data-toggle="modal" data-target="#modalMateriaPrima"> Vincular Datas </button></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-primary btn-sm bg-info-700" data-toggle="modal" data-target="#modalMateriaPrima"> Vincular Datas </button></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-primary btn-sm bg-info-700" data-toggle="modal" data-target="#modalMateriaPrima"> Vincular Datas </button></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-primary btn-sm bg-info-700" data-toggle="modal" data-target="#modalMateriaPrima"> Vincular Datas </button></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-primary btn-sm bg-info-700" data-toggle="modal" data-target="#modalMateriaPrima"> Vincular Datas </button></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-primary btn-sm bg-info-700" data-toggle="modal" data-target="#modalMateriaPrima"> Vincular Datas </button></td>
+                            </tr>
+                           
+                           
+                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    @*Modal Vincular Datas*@
+
+    <div id="modalMateriaPrima" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Vincular Data</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="form-control" type="date" name="date">
+                            <span class="form-text text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> </font></font></span>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <button type="button" class="btn bg-teal bg-info-700"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadastrar</font></font></button>
+                                <button type="button" class="btn bg-teal bg-info-700"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Excluir</font></font></button>
+                            </div>
+
+                        </div>
+
+                        <div class="card bg-info text-white">
+                            <div class="card-header header-elements-inline">
+                                
+                                <div class="header-elements">
+                                   
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                             
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn bg-teal bg-info-700"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Salvar</font></font></button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    @*Modal Vincular Professor*@
+
+    <div id="modalMateria" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Vincular Professor</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">Fechar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <input type="submit" value="Salvar" class="btn btn-primary bg-info-700" />
+        <a asp-action="Index" class="btn btn-primary bg-info-700">
+            Voltar
+        </a>
+        <button type="button" class="btn btn-primary bg-info-700" data-toggle="modal" data-target="#modalMateria"> Vincular Professor </button>
+    </div>
+
+
+
+
+    @*
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }*@
+</body>
+</html>

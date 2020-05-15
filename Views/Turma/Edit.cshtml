@@ -1,0 +1,47 @@
+﻿@model Tcc_Senai.Models.Turma
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+<div class="card-block">
+    <div class="card-header text-white bg-secondary text-center h1">Atualizar
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdTurma" />
+            <div class="form-group">
+                <label asp-for="Periodo" class="control-label">
+                </label>
+                <input asp-for="Periodo" class="form-control" />
+                <span asp-validation-for="Periodo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeTurma" class="control-label">
+                </label>
+                <input asp-for="NomeTurma" class="form-control" />
+                <span asp-validation-for="NomeTurma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCurso" class="control-label"></label>
+                <select asp-for="IdCurso" class="form-control" asp-items=@ViewBag.Cursos></select>
+            </div>
+            <div class="form-group text-center h3">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+
+                <a asp-action="Index" class="btn btn-warning">
+                    Voltar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+@*
+@section ScriptPage {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }*@
+}
+

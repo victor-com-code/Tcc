@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/css/responsivo/assets/icomoon/styles.css" />
+    <link rel="stylesheet" href="~/css/responsivo/css/datatables.css" />
+    <link rel="stylesheet" href="~/css/responsivo/bootstrap.css" />
+    <a href="C:\Users\pc\source\repos\TCCSENAI\TCCSENAI\Views\Shared\_LayoutLogin.cshtml">C:\Users\pc\source\repos\TCCSENAI\TCCSENAI\Views\Shared\_LayoutLogin.cshtml</a>
+    <link rel="stylesheet" href="~/css/responsivo/bootstrap_limitless.css" />
+    <link rel="stylesheet" href="~/css/responsivo/layout.css" />
+    <link rel="stylesheet" href="~/css/responsivo/components.css" />
+    <link rel="stylesheet" href="~/css/responsivo/colors.css" />
+    <link rel="stylesheet" href="~/css/responsivo/css/all.css" />
+    @RenderSection("Contents", required: false)
+
+</head>
+<body class="">
+    <!-- Main navbar -->
+    <div id="carregando" style="display: none;">
+        <div id="carregando-fundo"></div>
+        <div id="carregando-img">
+            <i class="icon-spinner2 spinner mr-2"></i>
+            <p><strong>Aguarde...</strong></p>
+        </div>
+    </div>
+
+
+    <div class="page-header page-header-light bg-info-700">
+
+
+        <div class="page-header-content header-elements-md-inline">
+            <div class="page-title d-flex">
+                <a href="#" class="d-inline-block">
+                    <img src="~/Images/Responsivo/Fiep.png" height="50" width="150">
+
+                </a>
+                <div>
+                    <h6 class="ml-5 p-2 font-weight-semibold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SENAI CRONOGRAMAS</font></font></h6>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="d-md-none">
+                <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+                    <i class="icon-paragraph-justify3"></i>
+                </button>
+            </div>
+
+
+
+            <div class="collapse navbar-collapse" id="navbar-celular">
+                <span class="navbar-text font-weight-black text-uppercase font-size-lg ml-md-3 mr-md-auto"> @ViewData["Title"] </span>
+                <span class="badge ml-md-3 mr-md-auto"> </span>
+            </div>
+
+
+
+
+            <div class="nav-item dropdown dropdown-user ">
+
+                <div class="ml-4  media-title font-weight-semibold">Senai Portão</div>
+                <div class=" ml-4 font-size-xs opacity-50">
+                    <i class="icon-pin font-size-sm"></i> &nbsp;Curitiba-PR
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="content-wrapper">
+        <div class="content">
+            @RenderBody()
+        </div>
+        <div class="navbar navbar-expand-lg navbar-light bg-info-700">
+            <div class="text-center d-lg-none w-100">
+                <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                    <i class="icon-unfold mr-2"></i>
+                    Rodapé
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-footer">
+                <span class="navbar-nav ml-lg-auto">
+                    © 2019 SENAI PORTÃO
+                </span>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+
+                <ul class="navbar-nav ml-lg-auto">
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/js/responsivo/jquery.min.js"></script>
+    <script src="~/js/responsivo/bootstrap.bundle.min.js"></script>
+    <script src="~/js/responsivo/plugins/blockui.min.js"></script>
+    <script src="~/js/responsivo/app.js"></script>
+    <script src="~/js/responsivo/Principal.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+

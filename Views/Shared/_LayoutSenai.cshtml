@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/css/responsivo/assets/icomoon/styles.css" />
+    <link rel="stylesheet" href="~/css/responsivo/css/datatables.css" />
+    <link rel="stylesheet" href="~/css/responsivo/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/responsivo/bootstrap_limitless.css" />
+    <link rel="stylesheet" href="~/css/responsivo/layout.css" />
+    <link rel="stylesheet" href="~/css/responsivo/components.css" />
+    <link rel="stylesheet" href="~/css/responsivo/colors.css" />
+    <link rel="stylesheet" href="~/css/responsivo/css/all.css" />
+    <link rel="stylesheet" href="~/css/Layout/Home.css" />
+    @RenderSection("Contents", required: false)
+
+</head>
+<body class="">
+    <!-- Main navbar -->
+    <div id="carregando" style="display: none;">
+        <div id="carregando-fundo"></div>
+        <div id="carregando-img">
+            <i class="icon-spinner2 spinner mr-2"></i>
+            <p><strong>Aguarde...</strong></p>
+        </div>
+    </div>
+
+
+        <div class="page-header page-header-light bg-info-700">
+
+
+            <div class="page-header-content header-elements-md-inline">
+                <div class="page-title d-flex">
+                    <a href="@Url.Action("Index", "Home")" class="d-inline-block">
+                        <img src="~/Images/Responsivo/Fiep.png" height="50" width="150">
+
+                    </a>
+                    <div>
+                        <h6 class="ml-5 p-2 font-weight-semibold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SENAI CRONOGRAMAS</font></font></h6>
+                    </div>
+
+
+                </div>
+
+                <div class="d-md-none">
+                    <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+                        <i class="icon-paragraph-justify3"></i>
+                    </button>
+                </div>
+
+
+
+                <div class="collapse navbar-collapse" id="navbar-celular">
+                    <span class="navbar-text font-weight-black text-uppercase font-size-lg ml-md-3 mr-md-auto"> @ViewData["Title"] </span>
+                    <span class="badge ml-md-3 mr-md-auto"> </span>
+                </div>
+
+
+
+
+                <div class="nav-item dropdown dropdown-user ">
+
+                    <div class="ml-4  media-title font-weight-semibold">Senai Portão</div>
+                    <div class=" ml-4 font-size-xs opacity-50">
+                        <i class="icon-pin font-size-sm"></i> &nbsp;Curitiba-PR
+                    </div>
+                </div>
+
+
+                <div class="user-icon-section">
+                    <ul class="navbar-nav">
+
+
+                        <li class="nav-item dropdown dropdown-user ">
+
+
+                            <a href="#" class="breadcrumb-elements-item dropdown-toggle mr-5" data-toggle="dropdown" aria-expanded="false">
+                                <img src="~/Images/Responsivo/user.jpg" class="rounded-circle mr-2 " height="35" width="35" alt="" />
+                                <font style="vertical-align: inherit;">
+                                    CONECTADO
+                                </font>
+                                <span>@User.Identity.Name</span>
+                            </a>
+
+
+
+
+                            <div class="dropdown-menu dropdown-menu-right bg-info-700">
+
+
+                                <a href="@Url.Action("MeuPerfil","Principal")" class="dropdown-item "><i class="icon-user"></i> MEU PERFIL </a>
+
+
+                                <a href="@Url.Action("Acesso","Register")" class="dropdown-item "><i class="icon-user-plus"></i> NOVO USUÁRIO </a>
+
+
+
+                                <a href="@Url.Action("Login","Acesso")" class="dropdown-item"><i class="icon-exit"></i> SAIR </a>
+
+                                <div class="dropdown-divider mb-2 bg-white"></div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    <div class="navbar navbar-expand-md navbar-light  bg-info-700">
+        <div class="text-center d-md-none w-100">
+            <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-navigation">
+                <i class="icon-unfold mr-2"></i>
+                Navigation
+            </button>
+        </div>
+
+
+
+
+        <div class="navbar-collapse collapse " id="navbar-navigation ">
+            <ul class="navbar-nav ">
+
+
+                <li class="nav-item">
+                    <a class="navbar">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar">
+                    </a>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="p-2 breadcrumb-elements-item dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="text-white  icon-user icon mr-2"></i><font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                                CADASTROS
+                            </font>
+                        </font>
+                    </a>
+                    <div class="dropdown-menu  list bg-info-700 ">
+
+                        <a href="@Url.Action("Create","Professor")" class="dropdown-item dropdown"><i class=""></i>PROFESSOR </a>
+                        <a href="@Url.Action("Create","Modalidade")" class="dropdown-item dropdown"><i class=""></i>MODALIDADE </a>
+                        <a href="@Url.Action("Create","Curso")" class="dropdown-item dropdown"><i class=""></i>CURSO </a>
+                        <a href="@Url.Action("Create","UnidadeCurricular")" class="dropdown-item dropdown"><i class=""></i>UNIDADE CURRICULAR </a>
+                        <a href="@Url.Action("Create","Semestre")" class="dropdown-item dropdown"><i class=""></i>SEMESTRE </a>
+                        <a href="@Url.Action("Create","Turma")" class="dropdown-item dropdown"><i class=""></i>TURMA </a>
+                        <a href="@Url.Action("Create","GerarCurso")" class="dropdown-item dropdown"><i class=""></i>GERAR CURSOS </a>
+
+                        <div class="dropdown-divider mb-2 bg-white"></div>
+                    </div>
+                </li>
+
+
+
+
+
+
+                <li class="nav-item">
+                    <a class="navbar">
+                    </a>
+                </li>
+
+
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="p-2 breadcrumb-elements-item dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="text-white icon-calendar2 icon mr-2"></i><font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                                CRONOGRAMAS
+                            </font>
+                        </font>
+                    </a>
+                    <div class="dropdown-menu bg-info-700 ">
+
+                        <div class="dropdown-submenu  bg-info-700">
+                            <a href="#" class="dropdown-item dropdown"><i class="icon-book mr-2"></i> CURSOS</a>
+
+                            <div class="dropdown-divider mb-2 bg-white"></div>
+
+                            <div class="dropdown-menu  bg-info-700">
+
+
+                                <div class="dropdown-submenu  bg-info-700">
+                                    <a href="#" class="dropdown-item dropdown-toggle">TÉCNICO</a>
+                                    <div class="dropdown-menu  bg-info-700">
+                                        <a href="#" class="dropdown-item">DESENVOLVIMENTO DE SISTEMAS</a>
+                                        <a href="#" class="dropdown-item">ALIMENTOS</a>
+                                        <a href="#" class="dropdown-item">LOGÍSTICA</a>
+                                        <a href="#" class="dropdown-item">SEGURANÇA DO TRABALHO</a>
+                                        <a href="#" class="dropdown-item">ADMINISTRAÇÃO</a>
+
+                                        <div class="dropdown-divider mb-2 bg-white"></div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-submenu  bg-info-700">
+                                    <a href="#" class="dropdown-item dropdown-toggle">APRENDIZAGEM</a>
+                                    <div class="dropdown-menu  bg-info-700">
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <div class="dropdown-divider mb-2 bg-white"></div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-submenu  bg-info-700">
+                                    <a href="#" class="dropdown-item dropdown-toggle">QUALIFICAÇÃO</a>
+                                    <div class="dropdown-menu bg-info-700 ">
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <div class="dropdown-divider mb-2 bg-white"></div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-submenu  bg-info-700">
+                                    <a href="#" class="dropdown-item dropdown-toggle">APERFEIÇOAMENTO</a>
+                                    <div class="dropdown-menu  bg-info-700">
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
+                                        <div class="dropdown-divider mb-2 bg-white"></div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider mb-2 bg-white"></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+
+
+ 
+
+
+
+    <div class="content-wrapper">
+
+
+        <div class="content">
+            @RenderBody()
+        </div>
+        <div class="navbar navbar-expand-lg navbar-light bg-info-700">
+            <div class="text-center d-lg-none w-100">
+                <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                    <i class="icon-unfold mr-2"></i>
+                    Rodapé
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-footer">
+                <span class="navbar-nav ml-lg-auto">
+                    © 2019 SENAI PORTÃO
+                </span>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+
+                <ul class="navbar-nav ml-lg-auto">
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/js/responsivo/jquery.min.js"></script>
+    <script src="~/js/responsivo/bootstrap.bundle.min.js"></script>
+    <script src="~/js/responsivo/plugins/blockui.min.js"></script>
+    <script src="~/js/responsivo/app.js"></script>
+    <script src="~/js/responsivo/Principal.js"></script>
+    @RenderSection("Styles", required: false)
+
+    @RenderSection("ScriptPage ", required: false)
+
+</body>
+</html>
+

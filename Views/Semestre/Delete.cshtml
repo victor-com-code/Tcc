@@ -1,0 +1,44 @@
+﻿@model Tcc_Senai.Models.Semestre
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Você quer realmente apagar esses dados?</h3>
+<div>
+    <h4>Semestre</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeSemestre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomeSemestre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdSemestre" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>
+</body>
+</html>

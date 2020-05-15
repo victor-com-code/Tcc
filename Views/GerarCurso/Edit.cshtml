@@ -1,0 +1,60 @@
+﻿@model Tcc_Senai.Models.GerarCurso
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+
+<h4>GerarCurso</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdGerarCursos" />
+            <div class="form-group">
+                <label asp-for="DataInicio" class="control-label"></label>
+                <input asp-for="DataInicio" class="form-control" />
+                <span asp-validation-for="DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataFim" class="control-label"></label>
+                <input asp-for="DataFim" class="form-control" />
+                <span asp-validation-for="DataFim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeModalidade" class="control-label"></label>
+                <input asp-for="NomeModalidade" class="form-control" />
+                <span asp-validation-for="NomeModalidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeCurso" class="control-label"></label>
+                <input asp-for="NomeCurso" class="form-control" />
+                <span asp-validation-for="NomeCurso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+    @*
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
+</body>
+</html>

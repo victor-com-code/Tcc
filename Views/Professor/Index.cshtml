@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Tcc_Senai.Models.Professor>
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+<!DOCTYPE html>
+
+<div class="card-body">
+    <div class="text-center mb-3 py-2 bg-info-700">
+        <h4 class="font-weight-semibold mb-1">CADASTRO DO  PROFESSOR</h4>
+    </div>
+
+
+</div>
+
+<br>
+<br />
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-action="Create">Cadastrar Novo </a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeCompleto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrimeiroNome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoDeContrato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HorarioDeTrabalho)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CargaHorariaSemanal)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeCompleto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrimeiroNome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoDeContrato)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HorarioDeTrabalho)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CargaHorariaSemanal)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdProfessor">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdProfessor">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

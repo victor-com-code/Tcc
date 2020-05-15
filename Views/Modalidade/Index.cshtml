@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Tcc_Senai.Models.Modalidade>
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Cadastrar Modalidade</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeModalidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeModalidade)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdModalidade">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdModalidade">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿@model Tcc_Senai.Models.Curso
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+@section Styles {
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css" />
+    </environment>
+    <environment exclude="Development">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+              asp-fallback-href="~/lib/font-awesome/css/font-awesome.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    </environment>
+}
+<div class="card-block">
+    <div class="card-header text-white bg-secondary text-center h1">Exibindo uma Curso </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="IdCurso" class="control-label">
+            </label>
+            <br />
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-key" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <input asp-for="IdCurso" class="form-control" disabled="disabled" />
+            </div>
+            <label asp-for="NomeCurso" class="control-label"></label>
+            <br />
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <input asp-for="NomeCurso" class="form-control" disabl
+                       ed="disabled" />
+            </div>
+            <label asp-for="Modalidade.NomeModalidade" class="control-label"></label>
+
+            <br />
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <input asp-for="Modalidade.NomeModalidade" class="form-control" disabled="disabled" />
+
+            </div>
+            <label asp-for="UnidadeCurricular.NomeUnidadeCurricular" class="control-label"></label>
+
+            <br />
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <input asp-for="UnidadeCurricular.NomeUnidadeCurricular" class="form-control" disabled="disabled" />
+
+            </div>
+        </div>
+    </div>
+    <div class="card-footer bg-info text-center text-white">
+        <a asp-action="Index" class="btn btn-danger">
+            Voltar
+        </a>
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalConfirmationDelete">
+            Remover Curso
+        </button>
+    </div>
+</div>
+<div class="modal fade" id="modalConfirmationDelete" tabindex="-1"
+     role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModal">
+                    Remoção de Curso
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Confirma a exclusão do Curso @Model.NomeCurso.ToUpper() ??
+                </p>
+            </div>
+            <div class="modal-footer">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="IdModalidade" />
+                    <input type="hidden" asp-for="IdUc" />
+                    <input type="submit" value="Remover Curso" class="btn btn-primary" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+

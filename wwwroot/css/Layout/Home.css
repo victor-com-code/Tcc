@@ -1,0 +1,10 @@
+﻿.center-form {
+    display:flex;
+    justify-content: center;
+}
+
+.center-form-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
