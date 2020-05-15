@@ -1,2 +1,2 @@
-# tcc
- repos do tcc
+# Tcc
+ repos do Tcc
