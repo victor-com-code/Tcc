@@ -24,6 +24,7 @@ namespace Tcc_Senai.Controllers
 
         }
         // GET: Coordenador Create
+        // blz
         public ActionResult Create()
         {
             return View();
