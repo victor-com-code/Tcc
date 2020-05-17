@@ -1,0 +1,47 @@
+﻿
+/* Style the nav menu*/
+.top-mobile-nav {
+    overflow: hidden;
+    background-color: #1574bf;
+    position: relative;
+}
+
+/* Hide the links */
+#myLinks {
+    display: none;
+}
+
+/* style the nav menu links */
+.top-mobile-nav a {
+     color: white;
+     padding: 14px 16px;
+     text-decoration: none;
+     font-size: 17px;
+     display: block;
+}
+
+/* Style the Hamburguer*/
+    .top-mobile-nav a.icon {
+        background: #1574bf;
+        display: block;
+        left: 0;
+        top: 0;
+        max-width: 50px;
+    }
+
+
+/* Add a grey background */
+    .top-mobile-nav a:hover {
+        background-color: white;
+        color: #1574bf;
+    }
+
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+.margin {
+    margin: 10px;
+}

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="~/css/responsivo/colors.css" />
     <link rel="stylesheet" href="~/css/responsivo/css/all.css" />
     <link rel="stylesheet" href="~/css/Layout/Home.css" />
+    <link rel="stylesheet" href="~/css/Layout/Geral.css" />
     @RenderSection("Contents", required: false)
 
 </head>
@@ -29,39 +30,39 @@
     </div>
 
 
-        <div class="page-header page-header-light bg-info-700">
+    <div class="page-header page-header-light bg-info-700">
 
 
-            <div class="page-header-content header-elements-md-inline">
-                <div class="page-title d-flex">
-                    <a href="@Url.Action("Index", "Home")" class="d-inline-block">
-                        <img src="~/Images/Responsivo/Fiep.png" height="50" width="150">
+        <div class="page-header-content header-elements-md-inline">
+            <div class="page-title d-flex">
+                <a href="@Url.Action("Index", "Home")" class="d-inline-block">
+                    <img src="~/Images/Responsivo/Fiep.png" height="50" width="150">
 
-                    </a>
-                    <div>
-                        <h6 class="ml-5 p-2 font-weight-semibold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SENAI CRONOGRAMAS</font></font></h6>
-                    </div>
-
-
+                </a>
+                <div>
+                    <h6 class="ml-5 p-2 font-weight-semibold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SENAI CRONOGRAMAS</font></font></h6>
                 </div>
 
-                <div class="d-md-none">
-                    <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+
+            </div>
+            <div class="row">
+                <div class="top-mobile-nav">
+                    <a class="icon" href="#">
                         <i class="icon-paragraph-justify3"></i>
-                    </button>
+                    </a>
+                    <div id="myLinks">
+                        <a href="@Url.Action("Create","Professor")">PROFESSOR </a>
+                        <a href="@Url.Action("Create","Modalidade")">MODALIDADE </a>
+                        <a href="@Url.Action("Create","Curso")">CURSO </a>
+                        <a href="@Url.Action("Create","UnidadeCurricular")">UNIDADE CURRICULAR </a>
+                        <a href="@Url.Action("Create","Semestre")">SEMESTRE </a>
+                        <a href="@Url.Action("Create","Turma")">TURMA </a>
+                        <a href="@Url.Action("Create","GerarCurso")" class="">GERAR CURSOS </a>
+
+                    </div>
                 </div>
 
-
-
-                <div class="collapse navbar-collapse" id="navbar-celular">
-                    <span class="navbar-text font-weight-black text-uppercase font-size-lg ml-md-3 mr-md-auto"> @ViewData["Title"] </span>
-                    <span class="badge ml-md-3 mr-md-auto"> </span>
-                </div>
-
-
-
-
-                <div class="nav-item dropdown dropdown-user ">
+                <div class="nav-item dropdown dropdown-user margin">
 
                     <div class="ml-4  media-title font-weight-semibold">Senai Portão</div>
                     <div class=" ml-4 font-size-xs opacity-50">
@@ -106,24 +107,12 @@
                     </ul>
 
                 </div>
-
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+             </div>
 
         </div>
+    </div>
+
+    </div>
 
     <div class="navbar navbar-expand-md navbar-light  bg-info-700">
         <div class="text-center d-md-none w-100">
@@ -261,7 +250,7 @@
 
 
 
- 
+
 
 
 
@@ -299,6 +288,7 @@
     <script src="~/js/responsivo/plugins/blockui.min.js"></script>
     <script src="~/js/responsivo/app.js"></script>
     <script src="~/js/responsivo/Principal.js"></script>
+    <script src="~/js/Layout/Geral.js"></script>
     @RenderSection("Styles", required: false)
 
     @RenderSection("ScriptPage ", required: false)
