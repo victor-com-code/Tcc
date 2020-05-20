@@ -1,19 +1,21 @@
 ﻿if (screen.width <= 480) {
-    var icon = document.querySelector('.icon');
-    icon.addEventListener('click', function () {
-        var myLinks = document.querySelector('#myLinks');
+    const menu = document.querySelector('.menu-links');
 
-        if (myLinks.style.display === "block") {
-            myLinks.style.display = "none";
+    var icon = document.querySelector('.icon');
+
+    icon.addEventListener('click', function () {
+        if (menu.style.display === "block") {
+            menu.style.display = "none";
         } else {
-            myLinks.style.display = "block";
-        }
+            menu.style.display = "block";
+        } 
     });
 }
 
 else {
-    var topMobile = document.querySelector('.top-mobile-nav');
-    topMobile.style.display = "none";
+    const menuMobile = document.querySelector('.menu-mobile-header');
+    menuMobile.style.display = "none";
+    
 }
 
 

@@ -1,47 +1,71 @@
-﻿
+﻿*a {
+    cursor: pointer;
+}
 /* Style the nav menu*/
-.top-mobile-nav {
+.menu-mobile-header {
+    position: relative;
     overflow: hidden;
     background-color: #1574bf;
-    position: relative;
 }
 
-/* Hide the links */
-#myLinks {
+.menu-links {
     display: none;
 }
 
 /* style the nav menu links */
-.top-mobile-nav a {
+.mobile-item {
      color: white;
      padding: 14px 16px;
      text-decoration: none;
      font-size: 17px;
      display: block;
+     border-bottom: 1px solid #fff;
 }
 
 /* Style the Hamburguer*/
-    .top-mobile-nav a.icon {
-        background: #1574bf;
-        display: block;
-        left: 0;
-        top: 0;
-        max-width: 50px;
-    }
-
-
-/* Add a grey background */
-    .top-mobile-nav a:hover {
-        background-color: white;
-        color: #1574bf;
-    }
-
-.active {
-    background-color: #4CAF50;
+a.icon {
     color: white;
+    display: block;
+    max-width: 20px;
+}
+a.icon:hover {
+    background: white;
+    color: #1574bf;
 }
 
 
+/* Add a grey background */
+.menu-mobile-header a:hover {
+    background-color: white;
+    color: #1574bf;
+}
+
+/* formatação do header */
 .margin {
     margin: 10px;
+}
+
+.margin-icon {
+    margin-left: 10px;
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width : 768px) {
+    .margin-icon {
+        margin-right: 0px !important;
+    }
+
+    .header-flex {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; 
+        white-space:nowrap;
+    }
+
+    .title-senai {
+        display: none;
+    }
 }
