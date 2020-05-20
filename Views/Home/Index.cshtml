@@ -3,58 +3,54 @@
     Layout = "~/Views/Shared/_LayoutSenai.cshtml";
 }
 <div class="container">
-    <div class="center-form-home">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card-body">
-                        <form action="#">
-                            <div class="input-group col-12 ">
-                                <div class=" form-group-feedback form-group-feedback-left    ">
-                                    <input type="text" class="d-md-block form-control form-control-lg alpha-grey" placeholder="Pesquise">
-                                    <div class="form-control-feedback form-control-feedback-lg">
-                                        <i class="icon-search4 text-muted"></i>
-                                    </div>
-                                </div>
-                                <div class="input-group-append">
-                                    <button runat="server" onserverclick="doIt" class="btn btn-primary btn-lg  bg-info-700">PESQUISAR</button>
-                                </div>
-                            </div>
-                        </form>
-
-
-                        <div class="row ">
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input " checked="">
-                                    MODALIDADE
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input">
-                                    CURSO
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" checked="">
-                                    PERÍODO
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input">
-                                    TURNO
-                                </label>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 offset-md-3">
+            <div class="card-body">
+                <form action="#">
+                    <div class="input-group col-12 ">
+                        <div class=" form-group-feedback form-group-feedback-left    ">
+                            <input type="text" class="d-md-block form-control form-control-lg alpha-grey" placeholder="Pesquise">
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-search4 text-muted"></i>
                             </div>
                         </div>
-
+                        <div class="input-group-append">
+                            <button runat="server" onserverclick="doIt" class="btn btn-primary btn-lg  bg-info-700">PESQUISAR</button>
+                        </div>
                     </div>
-                  </div>
+                </form>
+
+
+                <div class="row ">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input " checked="">
+                            MODALIDADE
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input">
+                            CURSO
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" checked="">
+                            PERÍODO
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input">
+                            TURNO
+                        </label>
+                    </div>
+                </div>
+
             </div>
-        </div>
+            </div>
     </div>
-        
 </div>
 
 
