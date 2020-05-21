@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
-   // Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
 }
 
 @section Styles {
@@ -73,7 +73,7 @@
         </a>
     </div>
 </div>
-@section ScriptPage {
+@section  ScriptPage {
     <environment include="Development">
         <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
     </environment>
@@ -89,5 +89,5 @@ $('#tabela_turmas').DataTable({
 });
 });
     </script>
-}
+} 
 
