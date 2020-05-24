@@ -32,9 +32,12 @@ namespace Tcc_Senai.Models
         public string TipoDeAcesso { get; set; }
 
         [Required]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
 
         [Required]
+        [Compare("Senha", ErrorMessage = "Senha e confirmação não são as mesmas.")]
+        [DataType(DataType.Password)]
         [Display(Name = "Confirmar Senha")]
         public string ConfirmarSenha { get; set; }
     }
