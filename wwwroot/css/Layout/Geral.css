@@ -70,11 +70,36 @@ a.icon:hover {
     }
 }
 
+/************************/
+/* Formatação das views em geral */
+/************************/
 
-/* Formatação dos titles das views */
 .title-view {
     display: flex;
     justify-content: center;
     color: #1574bf;
     font-weight: bold;
 }
+
+/* formatação dos icones */
+
+.i-font-50 {
+    font-size: 50px;
+    margin-left: 20px;
+}
+
+.i-font-30 {
+    font-size: 30px;
+    padding: 10px;
+}
+
+.dr-icon {
+    position: absolute;
+    right: 200px;
+}
+
+.icone-link:hover {
+    color: #024f91;
+}
+
+
