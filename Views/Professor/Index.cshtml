@@ -21,7 +21,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Lista de Professores</title>
 </head>
 <body>
     <p>
@@ -68,8 +68,8 @@
                         @Html.DisplayFor(modelItem => item.CargaHorariaSemanal)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.IdProfessor">Edit</a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdProfessor">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.IdProfessor">Editar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdProfessor">Deletar</a>
                     </td>
                 </tr>
             }
