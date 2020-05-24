@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Voltar Lista</title>
 </head>
 <body>
 <p>
@@ -40,9 +40,9 @@
                 @Html.DisplayFor(modelItem => item.Ano)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdSemestre">Edit</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdSemestre">Editar</a> |
 
-                <a asp-action="Delete" asp-route-id="@item.IdSemestre">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.IdSemestre">Deletar</a>
             </td>
         </tr>
 }
