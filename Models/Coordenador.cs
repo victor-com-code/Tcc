@@ -11,24 +11,30 @@ namespace Tcc_Senai.Models
         [Key]
         public long? IdCoordenador { get; set; }
 
-
+        [Required]
         [Display (Name ="Nome Completo")]
         public string NomeCompleto { get; set; }
 
+        [Required]
         [Display(Name = "Nome Usuário")]
         public string NomeDoUsuario { get; set; }
 
+        [Required]
         [Display(Name = "E-mail")]
         [RegularExpression(".+@.+\\..+", ErrorMessage = "O campo {0} e-mail é inválido")]
         public string Email { get; set; }
 
+        [Required]
         public string Sexo { get; set; }
 
+        [Required]
         [Display(Name = "Tipo Acesso")]
         public string TipoDeAcesso { get; set; }
 
+        [Required]
         public string Senha { get; set; }
 
+        [Required]
         [Display(Name = "Confirmar Senha")]
         public string ConfirmarSenha { get; set; }
     }

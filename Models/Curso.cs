@@ -23,9 +23,11 @@ namespace Tcc_Senai.Models
         public long? IdUc { get; set; }
         public virtual UnidadeCurricular UnidadeCurricular { get; set; }
 
+        [Required]
         [Display(Name = "Carga Horária")]
         public string CargaHoraria { get; set; }
 
+        [Required]
         public string Sigla { get; set; }
 
 
