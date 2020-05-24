@@ -18,13 +18,18 @@ namespace Tcc_Senai.Models
         [Display(Name = "Nome Usuário")]
         public string NomeDoUsuario { get; set; }
 
+        [Display(Name = "E-mail")]
         [RegularExpression(".+@.+\\..+", ErrorMessage = "O campo {0} e-mail é inválido")]
         public string Email { get; set; }
 
         public string Sexo { get; set; }
+
         [Display(Name = "Tipo Acesso")]
         public string TipoDeAcesso { get; set; }
+
         public string Senha { get; set; }
+
+        [Display(Name = "Confirmar Senha")]
         public string ConfirmarSenha { get; set; }
     }
 }

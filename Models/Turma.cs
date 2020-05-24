@@ -11,6 +11,8 @@ namespace Tcc_Senai.Models
     {
         [Key]
         public long? IdTurma { get; set; }
+
+        [Display(Name = "Período")]
         public string Periodo { get; set; }
 
         [Display (Name = "Turma")]

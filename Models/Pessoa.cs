@@ -10,6 +10,8 @@ namespace Tcc_Senai.Models
     {   [Key]
         public long? IdPessoa { get; set; }
         public string Nome { get; set; }
+
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
         
