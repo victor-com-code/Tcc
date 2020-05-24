@@ -37,9 +37,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Senha)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConfirmarSenha)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -63,9 +60,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Senha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConfirmarSenha)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdCoordenador" >Editar</a> |
