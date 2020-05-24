@@ -11,6 +11,7 @@ namespace Tcc_Senai.Models
         [Key]
         public long? IdGerarCursos { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Inicio Curso")]
