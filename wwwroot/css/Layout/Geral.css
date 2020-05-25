@@ -94,8 +94,8 @@ a.icon:hover {
 }
 
 .dr-icon {
-    position: absolute;
-    right: 200px;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .icone-link:hover {

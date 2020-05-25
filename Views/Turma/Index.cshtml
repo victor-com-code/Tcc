@@ -27,7 +27,7 @@
         Turmas
     </div>
     <div class="card-body">
-        <table id="tabela_turmas">
+        <table id="tabela_turmas" class="table">
             <thead>
                 <tr>
                     <th>
@@ -57,20 +57,16 @@
                         @Html.DisplayFor(modelItem => item.Curso.NomeCurso)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.IdTurma">Editar</a> |
-
-
-                        <a asp-action="Delete" asp-route-id="@item.IdTurma">Deletar</a>
+                        <a asp-action="Edit" asp-route-id="@item.IdTurma" class="i-font-30 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdTurma" class="i-font-30 icone-link"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 }
             </tbody>
         </table>
     </div>
-    <div class="card-footer bg-success text-center">
-        <a asp-action="Create" class="btn-success">
-            Cadastrar Turma
-        </a>
+    <div class="dr-icon icone-link">
+        <a asp-action="Create" class="i-font-50"><i class="fas fa-folder-plus"></i></a>
     </div>
 </div>
 @section  ScriptPage {

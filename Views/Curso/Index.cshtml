@@ -27,7 +27,7 @@
         Cursos
     </div>
     <div class="card-body">
-        <table id="tabela_cursos">
+        <table id="tabela_cursos" class="table">
             <thead>
                 <tr>
 
@@ -48,46 +48,42 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Sigla)
                     </th>
-                    
+
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
+                    <tr>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomeCurso)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Modalidade.NomeModalidade)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UnidadeCurricular.NomeUnidadeCurricular)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CargaHoraria)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sigla)
-                    </td>
-                    
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.IdCurso">Editar</a> |
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeCurso)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modalidade.NomeModalidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnidadeCurricular.NomeUnidadeCurricular)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CargaHoraria)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sigla)
+                        </td>
 
-
-                        <a asp-action="Delete" asp-route-id="@item.IdCurso">Deletar</a>
-                    </td>
-                </tr>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdCurso" class="i-font-30 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdCurso" class="i-font-30 icone-link"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
     </div>
-    <div class="card-footer bg-success text-center">
-        <a asp-action="Create" class="btn-success">
-            Cadastrar Curso
-        </a>
+    <div class="dr-icon icone-link">
+        <a asp-action="Create" class="i-font-50"><i class="fas fa-folder-plus"></i></a>
     </div>
 </div>
 @*
