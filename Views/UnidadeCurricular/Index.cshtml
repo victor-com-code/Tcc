@@ -13,31 +13,32 @@
     <title>Index</title>
 </head>
 <body>
- 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.NomeUnidadeCurricular)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="col-12" style="overflow-x: auto;">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomeUnidadeCurricular)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.IdUc" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdUc" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeUnidadeCurricular)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeUnidadeCurricular)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdUc" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdUc" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
     <div class="dr-icon icone-link">
         <a asp-action="Create" class="i-font-50"><i class="fas fa-folder-plus"></i></a>
     </div>

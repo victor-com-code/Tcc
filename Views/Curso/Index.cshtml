@@ -27,60 +27,62 @@
         Cursos
     </div>
     <div class="card-body">
-        <table id="tabela_cursos" class="table">
-            <thead>
-                <tr>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.NomeCurso)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Modalidade.NomeModalidade)
-
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UnidadeCurricular.NomeUnidadeCurricular)
-
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CargaHoraria)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Sigla)
-                    </th>
-
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+        <div class="col-12"  style="overflow-x: auto;">
+            <table id="tabela_cursos" class="table">
+                <thead>
                     <tr>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NomeCurso)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Modalidade.NomeModalidade)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UnidadeCurricular.NomeUnidadeCurricular)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CargaHoraria)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Sigla)
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NomeCurso)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Modalidade.NomeModalidade)
 
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
-                            <a asp-action="Delete" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
-                        </td>
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnidadeCurricular.NomeUnidadeCurricular)
+
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CargaHoraria)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Sigla)
+                        </th>
+
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NomeCurso)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Modalidade.NomeModalidade)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnidadeCurricular.NomeUnidadeCurricular)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CargaHoraria)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Sigla)
+                            </td>
+
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                                <a asp-action="Delete" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="dr-icon icone-link">
         <a asp-action="Create" class="i-font-50"><i class="fas fa-folder-plus"></i></a>

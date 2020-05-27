@@ -13,48 +13,50 @@
     <title>Index</title>
 </head>
 <body>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.DataInicio)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DataFim)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NomeModalidade)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NomeCurso)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="col-12" style="overflow-x: auto;">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataInicio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataFim)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomeModalidade)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomeCurso)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.IdGerarCursos" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdGerarCursos" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataInicio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataFim)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeModalidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeCurso)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataInicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataFim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeModalidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeCurso)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdGerarCursos" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdGerarCursos" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
     <div class="dr-icon icone-link">
         <a asp-action="Create" class="i-font-50"><i class="fas fa-folder-plus"></i></a>
     </div>
