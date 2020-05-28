@@ -26,65 +26,85 @@
     <div class="card-header text-white bg-primary text-center h1">
         CURSOS
     </div>
-        <div class="col-12 content-view">
-            <table id="tabela_cursos" class="table">
-                <thead>
+    <div class="col-12 content-view">
+        <table id="tabela_cursos" class="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeCurso)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Modalidade.NomeModalidade)
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UnidadeCurricular.NomeUnidadeCurricular)
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CargaHoraria)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sigla)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
                     <tr>
 
-                        <th>
-                            @Html.DisplayNameFor(model => model.NomeCurso)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Modalidade.NomeModalidade)
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeCurso)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modalidade.NomeModalidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnidadeCurricular.NomeUnidadeCurricular)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CargaHoraria)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sigla)
+                        </td>
 
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.UnidadeCurricular.NomeUnidadeCurricular)
-
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CargaHoraria)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Sigla)
-                        </th>
-
-                        <th></th>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NomeCurso)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Modalidade.NomeModalidade)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UnidadeCurricular.NomeUnidadeCurricular)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CargaHoraria)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Sigla)
-                            </td>
-
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
-                                <a asp-action="Delete" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    <div class="dr-icon icone-link">
-        <a asp-action="Create" class="i-font-50"><i class="fas fa-folder-plus"></i></a>
+                }
+            </tbody>
+        </table>
     </div>
+    <div class="dr-icon icone-link">
+        <div class="row">
+            <div class="col-6">
+                <a asp-action="Create" class="i-font-50"><i class="fas fa-folder-plus"></i></a>
+            </div>
+            <div class="col-6">
+                <a class="btn-modal i-font-50"><i class="far fa-question-circle"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-help">
+        <div class="help-content">
+            <button class="close-modal">X</button>
+            <h3>AJUDA</h3>
+            <div class="i-font-20">
+                <i class="fas fa-pencil-alt"></i>
+                <i class="fas fa-trash-alt"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/Layout/Index.js"></script>
 </div>
 @*
 @section ScriptPage {
