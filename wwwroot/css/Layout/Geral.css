@@ -73,6 +73,10 @@ a.icon:hover {
 /************************/
 /* Formatação das views em geral */
 /************************/
+.content-view {
+    padding-top: 10px;
+    overflow-x: auto;
+}
 
 .title-view {
     display: flex;

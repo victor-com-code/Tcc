@@ -3,10 +3,12 @@
     justify-content: center;
 }
 
+/* deixar*/
 .form-wrap {
     display: flex;
     justify-content: center;
 }
+
 
 @media only screen and (max-width : 768px) {
     .form-wrap {
