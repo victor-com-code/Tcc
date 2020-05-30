@@ -1,6 +1,13 @@
 ﻿*a {
     cursor: pointer;
 }
+
+label {
+    font-size: 15px!important;
+}
+input {
+    font-size: 20px!important;
+}
 /* Estilo nav menu*/
 .menu-mobile-header {
     position: relative;
@@ -108,6 +115,18 @@ a.icon:hover {
 
 .icone-link:hover {
     color: #024f91;
+}
+
+/* icones da view create */
+.btn-icons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-submit {
+    border: none;
+    color: #1574bf;
+    cursor: pointer;
 }
 
 /* Formatação do modal de ajuda */

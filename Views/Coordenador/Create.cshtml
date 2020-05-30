@@ -19,51 +19,51 @@
     <div class="row">
         <div class="col-12 col-sm-12 col-md-6 offset-md-3">
              <h2 class="title-view">Coordenador(a)</h2>
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="NomeCompleto" class="control-label"></label>
-                    <input asp-for="NomeCompleto" class="form-control" />
-                    <span asp-validation-for="NomeCompleto" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="NomeDoUsuario" class="control-label"></label>
-                    <input asp-for="NomeDoUsuario" class="form-control" />
-                    <span asp-validation-for="NomeDoUsuario" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Sexo" class="control-label"></label>
-                    <input asp-for="Sexo" class="form-control" />
-                    <span asp-validation-for="Sexo" class="text-danger"></span>
-                </div>
+             <form asp-action="Create">
+                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                 <div class="form-group">
+                     <label asp-for="NomeCompleto" class="control-label"></label>
+                     <input asp-for="NomeCompleto" class="form-control" />
+                     <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="NomeDoUsuario" class="control-label"></label>
+                     <input asp-for="NomeDoUsuario" class="form-control" />
+                     <span asp-validation-for="NomeDoUsuario" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="Email" class="control-label"></label>
+                     <input asp-for="Email" class="form-control" />
+                     <span asp-validation-for="Email" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="Sexo" class="control-label"></label>
+                     <input asp-for="Sexo" class="form-control" />
+                     <span asp-validation-for="Sexo" class="text-danger"></span>
+                 </div>
 
-                <div class="form-group">
-                    <label asp-for="TipoDeAcesso" class="control-label"></label>
-                    <input asp-for="TipoDeAcesso" class="form-control" />
-                    <span asp-validation-for="TipoDeAcesso" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Senha" class="control-label"></label>
-                    <input asp-for="Senha" class="form-control" />
-                    <span asp-validation-for="Senha" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ConfirmarSenha" class="control-label"></label>
-                    <input asp-for="ConfirmarSenha" class="form-control" />
-                    <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Salvar" class="btn btn-primary" />
-                    <a asp-action="Index" class="btn btn-primary">
-                        Voltar
-                    </a>
-                </div>
-            </form>
+                 <div class="form-group">
+                     <label asp-for="TipoDeAcesso" class="control-label"></label>
+                     <input asp-for="TipoDeAcesso" class="form-control" />
+                     <span asp-validation-for="TipoDeAcesso" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="Senha" class="control-label"></label>
+                     <input asp-for="Senha" class="form-control" />
+                     <span asp-validation-for="Senha" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="ConfirmarSenha" class="control-label"></label>
+                     <input asp-for="ConfirmarSenha" class="form-control" />
+                     <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
+                 </div>
+                 <div class="btn-icons",>
+                     <a asp-action="Index" class="i-font-50">
+                         <i class="fas fa-chevron-circle-left"></i>
+                     </a>
+                     <button class="btn-submit i-font-50"><i class="fas fa-save"></i></button>
+                 </div>
+             </form>
         </div>
     </div>
 
