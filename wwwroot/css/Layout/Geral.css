@@ -86,6 +86,7 @@ a.icon:hover {
     justify-content: center;
     color: #1574bf;
     font-weight: bold;
+    border: 3px solid #1574bf;
 }
 
 /* formatação dos icones */
@@ -130,6 +131,8 @@ a.icon:hover {
     justify-content: center;
     align-items: center;
     z-index: 1;
+
+    overflow: hidden!important;
 
 }
 
