@@ -11,6 +11,7 @@ namespace Tcc_Senai.Models
         [Key]
         public long? IdModalidade { get; set; }
 
+        [Required(ErrorMessage = "O campo Modalidade é obrigatório.")]
         [Display(Name = "Modalidade")]
         public string NomeModalidade { get; set; }
 

@@ -13,8 +13,6 @@ namespace Tcc_Senai.Models
 
         [Display(Name = "E-mail")]
         public string Email { get; set; }
-
-        
     }
 }
 

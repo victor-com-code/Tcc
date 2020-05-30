@@ -12,6 +12,7 @@ namespace Tcc_Senai.Models
         [Key]
         public long? IdUc { get; set; }
 
+        [Required(ErrorMessage = "O campo Unidade Curricular é obrigatório.")]
         [Display (Name = "Unidade Curricular")]
         public string NomeUnidadeCurricular{ get; set;}
 
