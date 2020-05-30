@@ -11,31 +11,31 @@ namespace Tcc_Senai.Models
         [Key]
         public long? IdCoordenador { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Nome Completo é obrigatório.")]
         [Display (Name ="Nome Completo")]
         public string NomeCompleto { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Nome Usuário é obrigatório.")]
         [Display(Name = "Nome Usuário")]
         public string NomeDoUsuario { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo E-mail é obrigatório.")]
         [Display(Name = "E-mail")]
         [RegularExpression(".+@.+\\..+", ErrorMessage = "O campo {0} e-mail é inválido")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Sexo é obrigatório.")]
         public string Sexo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O Tipo Acesso é obrigatório.")]
         [Display(Name = "Tipo Acesso")]
         public string TipoDeAcesso { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Senha é obrigatório.")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Confirmar Senha é obrigatório!")]
         [Compare("Senha", ErrorMessage = "Senha e confirmação não são as mesmas.")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar Senha")]
