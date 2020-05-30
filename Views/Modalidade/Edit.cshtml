@@ -14,11 +14,9 @@
 </head>
 <body>
 
-
-<hr />
 <div class="row">
     <div class="col-12 col-sm-12 col-md-6 offset-md-3">
-         <h2 class="title-view">Modalidade</h2>
+         <h2 class="title-view">Alterar Modalidade</h2>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdModalidade" />
@@ -27,16 +25,17 @@
                 <input asp-for="NomeModalidade" class="form-control" />
                 <span asp-validation-for="NomeModalidade" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
+
+            <div class="btn-icons" ,>
+                <a asp-action="Index" class="i-font-50">
+                    <i class="fas fa-chevron-circle-left"></i>
+                </a>
+                <button class="btn-submit i-font-50"><i class="fas fa-save"></i></button>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Voltar Lista</a>
-</div>
 @*
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
