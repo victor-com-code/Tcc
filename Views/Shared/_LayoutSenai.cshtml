@@ -59,11 +59,11 @@
                     <a href="@Url.Action("Index","Professor")" class="mobile-item">PROFESSOR </a>
                     <a href="@Url.Action("Index","Modalidade")" class="mobile-item">MODALIDADE </a>
                     <a href="@Url.Action("Index","Curso")" class="mobile-item">CURSO </a>
-                    <a href="@Url.Action("Index","UnidadeCurricular")"class="mobile-item">UNIDADE CURRICULAR </a>
-                    <a href="@Url.Action("Index","Semestre")"class="mobile-item">SEMESTRE </a>
-                    <a href="@Url.Action("Index","Turma")"class="mobile-item">TURMA </a>
-                    <a href="@Url.Action("Index","GerarCurso")"class="mobile-item">GERAR CURSOS </a>
-                    <a href="@Url.Action("Index", "Coordenador")"class="mobile-item">COORDENADOR </a>
+                    <a href="@Url.Action("Index","UnidadeCurricular")" class="mobile-item">UNIDADE CURRICULAR </a>
+                    <a href="@Url.Action("Index","Semestre")" class="mobile-item">SEMESTRE </a>
+                    <a href="@Url.Action("Index","Turma")" class="mobile-item">TURMA </a>
+                    <a href="@Url.Action("Index","GerarCurso")" class="mobile-item">GERAR CURSOS </a>
+                    <a href="@Url.Action("Index", "Coordenador")" class="mobile-item">COORDENADOR </a>
                 </div>
             </div>
 
@@ -71,15 +71,30 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown dropdown-user ">
                         <a href="#" class="breadcrumb-elements-item dropdown-toggle mr-5 margin-icon" data-toggle="dropdown" aria-expanded="false">
+                            <img src="~/Images/Responsivo/user.jpg" class="rounded-circle mr-2 " height="35" width="35" alt="" />
                             <font style="vertical-align: inherit;">
                                 CONECTADO
                             </font>
                             <span>@User.Identity.Name</span>
-                            <img src="~/Images/Responsivo/user.jpg" class="rounded-circle mr-2 " height="35" width="35" alt="" />
                         </a>
                     </li>
                 </ul>
             </div>
+
+           <!-- <div class="dropdown-menu dropdown-menu-right bg-info-700">
+
+
+                <a href="@Url.Action("MeuPerfil","Principal")" class="dropdown-item "><i class="icon-user"></i> MEU PERFIL </a>
+
+
+                <a href="@Url.Action("Acesso","Register")" class="dropdown-item "><i class="icon-user-plus"></i> NOVO USUÁRIO </a>
+
+
+
+                <a href="@Url.Action("Login","Acesso")" class="dropdown-item"><i class="icon-exit"></i> SAIR </a>
+
+                <div class="dropdown-divider mb-2 bg-white"></div>
+            </div> -->
 
         </div>
     </div>
