@@ -12,14 +12,16 @@ namespace Tcc_Senai.Models
         [Key]
         public long? IdTurma { get; set; }
 
+        [Required(ErrorMessage = "O campo Período é obrigatório.")]
         [Display(Name = "Período")]
         public string Periodo { get; set; }
 
+        [Required(ErrorMessage = "O campo Turma é obrigatório.")]
         [Display (Name = "Turma")]
         public string NomeTurma { get; set; }
 
         [Display (Name= "Curso")]
-       [ForeignKey("Curso")]
+        [ForeignKey("Curso")]
         public long? IdCurso { get; set; }
         public virtual Curso Curso { get; set; }
 

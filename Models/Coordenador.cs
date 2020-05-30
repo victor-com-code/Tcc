@@ -13,6 +13,7 @@ namespace Tcc_Senai.Models
 
         [Required(ErrorMessage = "O campo Nome Completo é obrigatório.")]
         [Display (Name ="Nome Completo")]
+        [MaxLength(30)]
         public string NomeCompleto { get; set; }
 
         [Required(ErrorMessage = "O campo Nome Usuário é obrigatório.")]
@@ -21,7 +22,7 @@ namespace Tcc_Senai.Models
 
         [Required(ErrorMessage = "O campo E-mail é obrigatório.")]
         [Display(Name = "E-mail")]
-        [RegularExpression(".+@.+\\..+", ErrorMessage = "O campo {0} e-mail é inválido")]
+        [RegularExpression(".+@.+\\..+", ErrorMessage = "O campo {0} E-mail é inválido")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "O campo Sexo é obrigatório.")]
@@ -32,11 +33,13 @@ namespace Tcc_Senai.Models
         public string TipoDeAcesso { get; set; }
 
         [Required(ErrorMessage = "O campo Senha é obrigatório.")]
+        [StringLength(20, ErrorMessage = "A senha deve ter entre {2} e {1} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "O campo Confirmar Senha é obrigatório!")]
         [Compare("Senha", ErrorMessage = "Senha e confirmação não são as mesmas.")]
+        [MaxLength(20)]
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar Senha")]
         public string ConfirmarSenha { get; set; }

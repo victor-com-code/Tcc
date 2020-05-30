@@ -11,20 +11,23 @@ namespace Tcc_Senai.Models
         [Key]
         public long? IdGerarCursos { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Início do Curso é obrigatório.")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        [Display(Name = "Inicio Curso")]
+        [Display(Name = "Início do Curso")]
         public DateTime DataInicio { get; set; }
 
+        [Required(ErrorMessage = "O campo Fim do Curso é obrigatório.")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        [Display(Name = "Fim Curso")]
+        [Display(Name = "Fim do Curso")]
         public DateTime DataFim { get; set; }
 
+        [Required(ErrorMessage = "O campo Modalidade é obrigatório.")]
         [Display(Name = "Modalidade")]
         public string NomeModalidade { get; set; }
 
+        [Required(ErrorMessage = "O campo Curso é obrigatório.")]
         [Display(Name = "Curso")]
         public string NomeCurso { get; set; }
         
