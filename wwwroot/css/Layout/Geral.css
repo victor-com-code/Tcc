@@ -2,12 +2,6 @@
     cursor: pointer;
 }
 
-label {
-    font-size: 15px!important;
-}
-input {
-    font-size: 20px!important;
-}
 /* Estilo nav menu*/
 .menu-mobile-header {
     position: relative;
