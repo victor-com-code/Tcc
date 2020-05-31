@@ -16,6 +16,7 @@ namespace Tcc_Senai.Models
         [MaxLength(30)]
         [Display(Name = "Nome Completo")]
         public string NomeCompleto { get; set; }
+        public string PrimeiroNome { get; set; }
 
         [Required(ErrorMessage = "O campo Contrato é obrigatório.")]
         [Display(Name = "Contrato")]
