@@ -24,12 +24,12 @@ namespace Tcc_Senai.Models
 
         [Required(ErrorMessage = "O campo Horário de Trabalho é obrigatório.")]
         [Display(Name = "Horário de Trabalho")]
-        [Range(1, 11)]
+        [Range(1, 10, ErrorMessage = "A jornada de trabalho diária não pode ultrapassar 10 horas.")]
         public int HorarioDeTrabalho { get; set; }
 
         [Required(ErrorMessage = "O campo Carga Horária Semanal é obrigatório.")]
         [Display(Name = "Carga Horária Semanal")]
-        [Range(1, 77)]
+        [Range(1, 70, ErrorMessage = "A jornada de trabalho semanal não pode ultrapassar 70 horas.")]
         public int CargaHorariaSemanal { get; set; }
 
         public virtual ICollection<ProfessorCurso> ProfessorCursos { get; set; }

@@ -16,6 +16,7 @@ namespace Tcc_Senai.Models
         [Display (Name = "Unidade Curricular")]
         public string NomeUnidadeCurricular{ get; set;}
 
+
         [ForeignKey("Curso")]
         public long? IdCurso { get; set; }
         public virtual Curso Curso { get; set; }
