@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +9,7 @@ namespace Tcc_Senai.Models
         [Key]
         public long? IdCurso { get; set; }
 
-        [Required(ErrorMessage = "O campo Curso é obrigatório.")]
+        [Required]
         [Display(Name = "Curso")]
         public string NomeCurso { get; set; }
 
@@ -19,12 +18,16 @@ namespace Tcc_Senai.Models
         public long? IdModalidade { get; set; }
         public virtual  Modalidade Modalidade { get; set; }
 
-        [Required(ErrorMessage = "O campo Carga Horária é obrigatório.")]
-        [Display(Name = "Carga Horária")]
-        public int CargaHoraria { get; set; }
+        [ForeignKey("UnidadeCurricular")]
+        [Display(Name = "Unidade Curricular")]
+        public long? IdUc { get; set; }
+        public virtual UnidadeCurricular UnidadeCurricular { get; set; }
 
-        [MaxLength(ErrorMessage = "A Sigla deve ter no máximo 5 caracteres.")]
-        [Required(ErrorMessage = "O campo Sigla é obrigatório.")]
+        [Required]
+        [Display(Name = "Carga Horária")]
+        public string CargaHoraria { get; set; }
+
+        [Required]
         public string Sigla { get; set; }
 
 
