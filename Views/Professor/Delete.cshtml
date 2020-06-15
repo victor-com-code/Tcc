@@ -20,34 +20,28 @@
             <form asp-action="Delete">
                 <input type="hidden" asp-for="IdProfessor" />
                 <dl class="row">
-                    <dt class="col-sm-2">
+                    <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.NomeCompleto)
                     </dt>
-                    <dd class="col-sm-10">
+                    <dd class="col-sm-8">
                         @Html.DisplayFor(model => model.NomeCompleto)
                     </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.PrimeiroNome)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.PrimeiroNome)
-                    </dd>
-                    <dt class="col-sm-2">
+                    <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.TipoDeContrato)
                     </dt>
-                    <dd class="col-sm-10">
+                    <dd class="col-sm-8">
                         @Html.DisplayFor(model => model.TipoDeContrato)
                     </dd>
-                    <dt class="col-sm-2">
+                    <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.HorarioDeTrabalho)
                     </dt>
-                    <dd class="col-sm-10">
+                    <dd class="col-sm-8">
                         @Html.DisplayFor(model => model.HorarioDeTrabalho)
                     </dd>
-                    <dt class="col-sm-2">
+                    <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.CargaHorariaSemanal)
                     </dt>
-                    <dd class="col-sm-10">
+                    <dd class="col-sm-8">
                         @Html.DisplayFor(model => model.CargaHorariaSemanal)
                     </dd>
                 </dl>
