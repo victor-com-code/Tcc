@@ -13,31 +13,34 @@
     <title>Deletar</title>
 </head>
 <body>
-
-<h3>Você tem certeza que deseja deletar?</h3>
-<div>
-     <h2 class="title-view">Semestre</h2>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NomeSemestre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NomeSemestre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Ano)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Ano)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="IdSemestre" />
-        <input type="submit" value="Deletar" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar</a>
-    </form>
-</div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 offset-md-3">
+            <h2 class="title-view">Deletar Coordenador(a)</h2>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="IdSemestre" />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.NomeSemestre)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NomeSemestre)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Ano)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Ano)
+                    </dd>
+                </dl>
+                <div class="btn-icons" ,>
+                    <a asp-action="Index" class="i-font-50">
+                        <i class="fas fa-chevron-circle-left"></i>
+                    </a>
+                    <button class="btn-submit i-font-50"><i class="fas fa-eraser"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
