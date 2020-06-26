@@ -1,4 +1,4 @@
-﻿@model Tcc_Senai.Models.GerarCurso
+﻿@*@model Tcc_Senai.Models.GerarCurso
 
 @{
     ViewData["Title"] = "Create";
@@ -29,14 +29,14 @@
                         <span asp-validation-for="DataFim" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="NomeModalidade" class="control-label"></label>
-                        <input asp-for="NomeModalidade" class="form-control" />
-                        <span asp-validation-for="NomeModalidade" class="text-danger"></span>
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="NomeCurso" class="control-label"></label>
-                        <input asp-for="NomeCurso" class="form-control" />
-                        <span asp-validation-for="NomeCurso" class="text-danger"></span>
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
                 </form>
             </div>
@@ -107,7 +107,7 @@
     </div>
 
 
-    @*Modal Vincular Datas*@
+
 
     <div id="modalMateriaPrima" class="modal fade" tabindex="-1">
         <div class="modal-dialog modal-lg">
@@ -158,13 +158,12 @@
         </div>
     </div>
 
-    @*Modal Vincular Professor*@
 
     <div id="modalMateria" class="modal fade" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Vincular Professor</h5>
+                    <h5 class="modal-title">Vincular Funcionario</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -180,7 +179,7 @@
     </div>
 
 
-    <button type="button" class="btn btn-primary bg-info-700" data-toggle="modal" data-target="#modalMateria"> Vincular Professor </button>
+    <button type="button" class="btn btn-primary bg-info-700" data-toggle="modal" data-target="#modalMateria"> Vincular Funcionario </button>
     <div class="btn-icons" ,>
         <a asp-action="Index" class="i-font-50">
             <i class="fas fa-chevron-circle-left"></i>
@@ -192,9 +191,9 @@
 
 
 
-    @*
+    
         @section Scripts {
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-        }*@
+        }
 </body>
-</html>
+</html>*@

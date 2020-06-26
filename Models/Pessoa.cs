@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace Tcc_Senai.Models
 {
     public class Pessoa
-    {   [Key]
-        public long? IdPessoa { get; set; }
-        public string Nome { get; set; }
+    {   //[Key]
+    //    public long? IdPessoa { get; set; }
+    //    public string Nome { get; set; }
 
-        [Display(Name = "E-mail")]
-        public string Email { get; set; }
+    //    [Display(Name = "E-mail")]
+    //    public string Email { get; set; }
     }
 }
 

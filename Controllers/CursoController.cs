@@ -19,39 +19,66 @@ namespace Tcc_Senai.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cursos.Include(c =>c.Modalidade).Include(i => i.UnidadeCurricular).OrderBy(b => b.NomeCurso).ToListAsync());
+            return View(await _context.Cursos.Include(c => c.Modalidade).OrderBy(b => b.Nome).ToListAsync());
         }
+
         // GET: Curso Create
         public ActionResult Create()
         {
-            var modalidade = _context.Modalidades.OrderBy(i => i.NomeModalidade).ToList();
-            modalidade.Insert(0, new Modalidade() { IdModalidade = 0, NomeModalidade = "Selecione a Modalidade" });
+            var modalidade = _context.Modalidades.OrderBy(i => i.Nome).ToList();
+            modalidade.Insert(0, new Modalidade() { Id = 0, Nome = "Selecione a Modalidade" });
             ViewBag.Modalidades = modalidade;
-            var unidadeCurriculars = _context.UnidadeCurriculares.OrderBy(i => i.NomeUnidadeCurricular).ToList();
-            unidadeCurriculars.Insert(0, new UnidadeCurricular() { IdUc = 0, NomeUnidadeCurricular = "Selecione a Unidade Curricular" });
-            ViewBag.UnidadeCurriculares = unidadeCurriculars;
+
+            var unidades = _context.UnidadeCurriculares.OrderBy(u => u.Nome).ToList();
+            unidades.Insert(0, new UnidadeCurricular() { Id = 0, Nome = "Selecione as Unidades Curriculares" });
+            ViewBag.Unidades = new MultiSelectList(unidades, "Id", "Nome");
+            
             return View();
         }
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCurso", "NomeCurso", "NomeModalidade, IdModalidade", "NomeUnidadeCurricular, IdUc", "CargaHoraria", "Sigla")] Curso curso)
+        public async Task<IActionResult> Create([Bind("Id", "Nome", "IdMod", "CargaHoraria", "Sigla")] Curso curso, int[] UnidadeId)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Add(curso);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    if (!haveCursos(curso)) 
+                    {
+                        _context.Add(curso);
+                        await _context.SaveChangesAsync();
+
+                        var currentCurso = _context.Cursos.Where(c => c.Nome.Equals(curso.Nome)).SingleOrDefault();
+                        // Para cada unidade selecionada cria a relação Curso -> Unidades Curriculares
+                        foreach (var ids in UnidadeId)
+                        {
+                            CursoUnidadeCurricular cursoUnidade = new CursoUnidadeCurricular();
+                            cursoUnidade.IdCurso = currentCurso.Id;
+                            cursoUnidade.IdUc = ids;
+                            _context.Add(cursoUnidade);
+                            await _context.SaveChangesAsync();
+                        }
+                        
+                        return RedirectToAction(nameof(Index));
+                    }
+                    ViewData["MSG_E"] = "Já existe um Curso cadastrado com esse nome.";
                 }
             }
             catch (DbUpdateException)
             {
                 ModelState.AddModelError("", "Não foi possível inserir os dados.");
             }
+            var modalidade = _context.Modalidades.OrderBy(i => i.Nome).ToList();
+            modalidade.Insert(0, new Modalidade() { Id = 0, Nome = "Selecione a Modalidade" });
+            ViewBag.Modalidades = modalidade;
+
+            var unidades = _context.UnidadeCurriculares.OrderBy(u => u.Nome).ToList();
+            unidades.Insert(0, new UnidadeCurricular() { Id = 0, Nome = "Selecione as Unidades Curriculares" });
+            ViewBag.Unidades = new MultiSelectList(unidades, "Id", "Nome");
             return View(curso);
         }
+
         // GET: Curso/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
@@ -59,21 +86,21 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var curso = await _context.Cursos.SingleOrDefaultAsync(m => m.IdCurso == id);
+            var curso = await _context.Cursos.SingleOrDefaultAsync(m => m.Id == id);
             if (curso == null)
             {
                 return NotFound();
             }
-            ViewBag.Modalidades = new SelectList(_context.Modalidades.OrderBy(b => b.NomeModalidade),"IdModalidade", "NomeModalidade", curso.IdModalidade);
-            ViewBag.UnidadeCurriculares = new SelectList(_context.UnidadeCurriculares.OrderBy(b => b.NomeUnidadeCurricular), "IdUc", "NomeUnidadeCurricular", curso.IdUc);
+            ViewBag.Modalidades = new SelectList(_context.Modalidades.OrderBy(b => b.Nome), "Id", "Nome", curso.IdMod);
+            ViewBag.Unidades = new MultiSelectList(_context.UnidadeCurriculares.OrderBy(u => u.Nome), "Id", "Nome");
             return View(curso);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IdCurso", "NomeCurso", "IdModalidade", "IdUc", "CargaHoraria", "Sigla")] Curso curso )
+        public async Task<IActionResult> Edit(long? id, [Bind("Id", "Nome", "IdMod", "CargaHoraria", "Sigla")] Curso curso, int[] UnidadeId)
         {
-            if (id != curso.IdCurso)
+            if (id != curso.Id)
             {
                 return NotFound();
             }
@@ -83,14 +110,25 @@ namespace Tcc_Senai.Controllers
                 {
                     _context.Update(curso);
                     await _context.SaveChangesAsync();
+
+                    deleteCursoUnidade(id);
+                    var ucs = _context.CursoUnidadeCurriculares.Where(c => c.IdCurso.Equals(id)).ToList();
+
+                    // Para cada unidade selecionada cria a relação Curso -> Unidades Curriculares
+                    foreach (var unidade in UnidadeId)
+                    {
+                        CursoUnidadeCurricular cursoUnidade = new CursoUnidadeCurricular();
+                        cursoUnidade.IdCurso = curso.Id;
+                        cursoUnidade.IdUc = unidade;
+                        _context.Add(cursoUnidade);
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CursoExists(curso.IdCurso))
+                    if (!CursoExists(curso.Id))
                     {
                         NotFound();
-
-
                         return NotFound();
                     }
                     else
@@ -100,13 +138,9 @@ namespace Tcc_Senai.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Modalidades = new SelectList(_context.Modalidades.OrderBy(i => i.NomeModalidade), "IdModalidade", "NomeModalidade", curso.IdModalidade);
-            ViewBag.UnidadeCurriculares = new SelectList(_context.UnidadeCurriculares.OrderBy(c => c.NomeUnidadeCurricular), "IdUc", "NomeUnidadeCurricular", curso.IdUc);
+            ViewBag.Modalidades = new SelectList(_context.Modalidades.OrderBy(i => i.Nome), "Id", "Nome", curso.IdMod);
+            ViewBag.Unidades = new MultiSelectList(_context.UnidadeCurriculares.OrderBy(u => u.Nome), "Id", "Nome");
             return View(curso);
-        }
-        private bool CursoExists(long? id)
-        {
-            return _context.Cursos.Any(e => e.IdCurso == id);
         }
 
         // GET: Cursos/Delete/5
@@ -116,7 +150,7 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var curso = await _context.Cursos.SingleOrDefaultAsync(m => m.IdCurso == id);
+            var curso = await _context.Cursos.SingleOrDefaultAsync(m => m.Id == id);
             if (curso == null)
             {
                 return NotFound();
@@ -128,16 +162,43 @@ namespace Tcc_Senai.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id)
         {
-            var curso = await _context.Cursos.SingleOrDefaultAsync(m => m.IdCurso == id);
+            deleteCursoUnidade(id);
+            var curso = await _context.Cursos.SingleOrDefaultAsync(m => m.Id == id);
             _context.Cursos.Remove(curso);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+            
+        }
+
+        private bool CursoExists(long? id)
+        {
+            return _context.Cursos.Any(e => e.Id == id);
+        }
+
+        public bool haveCursos(Curso curso)
+        {
+            var have = _context.Cursos.Where(c => c.Nome.Equals(curso.Nome)).SingleOrDefault();
+            if (have != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool deleteCursoUnidade(long? id)
+        {
+            // pegando as Curso -> Unidades curriculares existentes
+            var ucs = _context.CursoUnidadeCurriculares.Where(c => c.IdCurso.Equals(id)).ToList();
+            foreach (var uc in ucs)
+            {
+                // excluindo as unidades existentes
+                _context.CursoUnidadeCurriculares.Remove(uc);
+                _context.SaveChanges();
+            }
+            return true;
         }
     }
-    //dshdkjadjsadhjaskddsakdas
-    //dshdkjadjsadhjaskddsakdas
-    //dshdkjadjsadhjaskddsakdas
-    //dshdkjadjsadhjaskddsakdas
-    //dshdkjadjsadhjaskddsakdas
-    //dshdkjadjsadhjaskddsakdas
 }

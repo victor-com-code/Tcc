@@ -1,5 +1,5 @@
 ﻿
-@model Tcc_Senai.Models.Professor
+@model Tcc_Senai.Models.Funcionario
 
 @{
     ViewData["Title"] = "Create";
@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Cadastrar professor</title>
+    <title>Cadastrar Funcionario</title>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 <div class="container">
     
         <div class="col-12 col-sm-12 col-md-6 offset-md-3">
-             <h2 class="title-view">Cadastro de professor</h2>
+             <h2 class="title-view">Cadastro de Funcionario</h2>
              <form asp-action="Create">
                  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                  <div class="form-group">
@@ -28,15 +28,19 @@
                      <span asp-validation-for="NomeCompleto" class="text-danger"></span>
                  </div>
                  <div class="form-group">
-                     <label asp-for="TipoDeContrato" class="control-label"></label>
-                     <input asp-for="TipoDeContrato" class="form-control" />
-                     <span asp-validation-for="TipoDeContrato" class="text-danger"></span>
-
+                     <label asp-for="Email" class="control-label"></label>
+                     <input asp-for="Email" class="form-control" />
+                     <span asp-validation-for="Email" class="text-danger"></span>
                  </div>
                  <div class="form-group">
-                     <label asp-for="HorarioDeTrabalho" class="control-label"></label>
-                     <input asp-for="HorarioDeTrabalho" class="form-control" />
-                     <span asp-validation-for="HorarioDeTrabalho" class="text-danger"></span>
+                     <label asp-for="Senha" class="control-label"></label>
+                     <input asp-for="Senha" class="form-control" />
+                     <span asp-validation-for="Senha" class="text-danger"></span>
+                 </div>
+                 <div class="form-group">
+                     <label asp-for="Horario" class="control-label"></label>
+                     <input asp-for="Horario" class="form-control" />
+                     <span asp-validation-for="Horario" class="text-danger"></span>
                  </div>
                  <div class="form-group">
                      <label asp-for="CargaHorariaSemanal" class="control-label"></label>
@@ -55,9 +59,8 @@
 
  
      
-  @*
 
-   @section Scripts {
+   @*@section Scripts {
       {await Html.RenderPartialAsync("_ValidationScriptsPartial");}
    }*@
 

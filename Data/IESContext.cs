@@ -10,23 +10,25 @@ namespace Tcc_Senai.Data
         {
         }
 
-        public DbSet<Professor> Professores { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<Modalidade> Modalidades { get; set; }
-        public DbSet<Coordenador> Coordenadores { get; set; }
+       
         public DbSet<Curso> Cursos { get; set; }
-        public DbSet<GerarCurso> GerarCursos { get; set; }
-        public DbSet<Pedagogo> Pedagogos { get; set; }
-        public DbSet<Semestre> Semestres { get; set; }
+        public DbSet<CursoUnidadeCurricular> CursoUnidadeCurriculares { get; set; }
         public DbSet<Turma> Turmas { get; set; }
         public DbSet<UnidadeCurricular> UnidadeCurriculares { get; set; }
-        public DbSet<ProfessorCurso> ProfessorCursos { get; set; }
-        
+        //public DbSet<FuncionarioCurso> FuncionarioCursos { get; set; }
+
+        //public DbSet<GerarCurso> GerarCursos { get; set; }
+        //public DbSet<Pedagogo> Pedagogos { get; set; }
+        //public DbSet<Semestre> Semestres { get; set; }
+        //public DbSet<Coordenador> Coordenadores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProfessorCurso>().HasKey(sc => new { sc.IdProfessor, sc.IdCurso });
+            modelBuilder.Entity<CursoUnidadeCurricular>().HasKey(sc => new { sc.IdCurso, sc.IdUc });
 
-
+            modelBuilder.Entity<FuncionarioCurso>().HasKey(sc => new { sc.IdCurso, sc.IdFunc });
         }
 
 

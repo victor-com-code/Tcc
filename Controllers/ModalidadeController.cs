@@ -20,7 +20,7 @@ namespace Tcc_Senai.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Modalidades.OrderBy(c =>
-            c.NomeModalidade).ToListAsync());
+            c.Nome).ToListAsync());
         }
         // GET: Modalidade/Create
         public IActionResult Create()
@@ -29,7 +29,7 @@ namespace Tcc_Senai.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NomeModalidade")] Modalidade modalidade)
+        public async Task<IActionResult> Create([Bind("Nome")] Modalidade modalidade)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var modalidade = await _context.Modalidades.SingleOrDefaultAsync(m => m.IdModalidade == id);
+            var modalidade = await _context.Modalidades.SingleOrDefaultAsync(m => m.Id == id);
             if (modalidade == null)
             {
                 return NotFound();
@@ -63,9 +63,9 @@ namespace Tcc_Senai.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IdModalidade,NomeModalidade")] Modalidade modalidade)
+        public async Task<IActionResult> Edit(long? id, [Bind("Id,Nome")] Modalidade modalidade)
         {
-            if (id != modalidade.IdModalidade)
+            if (id != modalidade.Id)
             {
                 return NotFound();
             }
@@ -78,7 +78,7 @@ namespace Tcc_Senai.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ModalidadeExists(modalidade.IdModalidade))
+                    if (!ModalidadeExists(modalidade.Id))
                     {
                         NotFound();
 
@@ -96,7 +96,7 @@ namespace Tcc_Senai.Controllers
         }
         private bool ModalidadeExists(long? id)
         {
-            return _context.Modalidades.Any(e => e.IdModalidade == id
+            return _context.Modalidades.Any(e => e.Id == id
             );
         }
        
@@ -107,7 +107,7 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var modalidade = await _context.Modalidades.SingleOrDefaultAsync(m => m.IdModalidade == id);
+            var modalidade = await _context.Modalidades.SingleOrDefaultAsync(m => m.Id == id);
             if (modalidade == null)
             {
                 return NotFound();
@@ -119,7 +119,7 @@ namespace Tcc_Senai.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id)
         {
-            var modalidade = await _context.Modalidades.SingleOrDefaultAsync(m => m.IdModalidade == id);
+            var modalidade = await _context.Modalidades.SingleOrDefaultAsync(m => m.Id == id);
             _context.Modalidades.Remove(modalidade);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

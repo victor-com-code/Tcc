@@ -21,7 +21,7 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.NomeUnidadeCurricular)
+                        @Html.DisplayNameFor(model => model.Nome)
                     </th>
                     <th></th>
                 </tr>
@@ -31,11 +31,11 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.NomeUnidadeCurricular)
+                            @Html.DisplayFor(modelItem => item.Nome)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.IdUc" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
-                            <a asp-action="Delete" asp-route-id="@item.IdUc" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 }

@@ -1,4 +1,4 @@
-﻿@model Tcc_Senai.Models.Professor
+﻿@model Tcc_Senai.Models.Funcionario
 
 @{
     ViewData["Title"] = "Delete";
@@ -10,15 +10,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Deletar professor</title>
+    <title>Deletar Funcionario</title>
 </head>
 <body>
     <hr />
     <div class="row">
         <div class="col-12 col-sm-12 col-md-6 offset-md-3">
-            <h2 class="title-view">Deletar professor</h2>
+            <h2 class="title-view">Deletar Funcionario</h2>
             <form asp-action="Delete">
-                <input type="hidden" asp-for="IdProfessor" />
+                <input type="hidden" asp-for="Id" />
                 <dl class="row">
                     <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.NomeCompleto)
@@ -27,16 +27,16 @@
                         @Html.DisplayFor(model => model.NomeCompleto)
                     </dd>
                     <dt class="col-sm-4">
-                        @Html.DisplayNameFor(model => model.TipoDeContrato)
+                        @Html.DisplayNameFor(model => model.Email)
                     </dt>
                     <dd class="col-sm-8">
-                        @Html.DisplayFor(model => model.TipoDeContrato)
+                        @Html.DisplayFor(model => model.Email)
                     </dd>
                     <dt class="col-sm-4">
-                        @Html.DisplayNameFor(model => model.HorarioDeTrabalho)
+                        @Html.DisplayNameFor(model => model.Horario)
                     </dt>
                     <dd class="col-sm-8">
-                        @Html.DisplayFor(model => model.HorarioDeTrabalho)
+                        @Html.DisplayFor(model => model.Horario)
                     </dd>
                     <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.CargaHorariaSemanal)

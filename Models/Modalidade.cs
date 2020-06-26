@@ -9,15 +9,12 @@ namespace Tcc_Senai.Models
     public class Modalidade
     {
         [Key]
-        public long? IdModalidade { get; set; }
+        public long Id { get; set; }
 
         [Required(ErrorMessage = "O campo Modalidade é obrigatório.")]
         [Display(Name = "Modalidade")]
-        public string NomeModalidade { get; set; }
-
-        
-      public virtual ICollection<Curso> Cursos { get; set; }
-        
-      public virtual ICollection<UnidadeCurricular> UnidadeCurriculars { get; set; }
+        public string Nome { get; set; }
+        public virtual ICollection<Curso> Cursos { get; set; }
+       
     }
 }

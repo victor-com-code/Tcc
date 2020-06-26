@@ -19,10 +19,10 @@ namespace Tcc_Senai.Data
             }
             var modalidades = new Modalidade[]
             {
-                new Modalidade {NomeModalidade="Técnico"},
-                new Modalidade {NomeModalidade="Profissional"},
-                new Modalidade {NomeModalidade="Aperfeiçoamento"},
-                new Modalidade {NomeModalidade="Avançado"}
+                new Modalidade {Nome="Técnico"},
+                new Modalidade {Nome="Profissional"},
+                new Modalidade {Nome="Aperfeiçoamento"},
+                new Modalidade {Nome="Avançado"}
             };
             foreach (Modalidade d in modalidades)
             {

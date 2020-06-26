@@ -19,11 +19,11 @@
          <h2 class="title-view">Alterar modalidade</h2>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdModalidade" />
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="NomeModalidade" class="control-label"></label>
-                <input asp-for="NomeModalidade" class="form-control" />
-                <span asp-validation-for="NomeModalidade" class="text-danger"></span>
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
 
             <div class="btn-icons" ,>

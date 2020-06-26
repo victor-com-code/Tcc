@@ -18,7 +18,7 @@
         <div class="col-12 col-sm-12 col-md-6 offset-md-3">
             <h2 class="title-view">Deletar turma</h2>
             <form asp-action="Delete">
-                <input type="hidden" asp-for="IdTurma" />
+                <input type="hidden" asp-for="Id" />
                 <dl class="row">
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.Periodo)
@@ -27,16 +27,16 @@
                         @Html.DisplayFor(model => model.Periodo)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.NomeTurma)
+                        @Html.DisplayNameFor(model => model.Sigla)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.NomeTurma)
+                        @Html.DisplayFor(model => model.Sigla)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Curso.NomeCurso)
+                        @Html.DisplayNameFor(model => model.Curso.Nome)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.Curso.NomeCurso)
+                        @Html.DisplayFor(model => model.Curso.Nome)
                     </dd>
                 </dl>
                 <div class="btn-icons" ,>

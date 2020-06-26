@@ -20,22 +20,22 @@ namespace Tcc_Senai.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Turmas.Include(i => i.Curso).OrderBy(c => c.NomeTurma).ToListAsync());
+            return View(await _context.Turmas.Include(i => i.Curso).OrderBy(c => c.Sigla).ToListAsync());
           
 
         }
         // GET: Turma Create
         public ActionResult Create()
         {
-            var cursos = _context.Cursos.OrderBy(i => i.NomeCurso).ToList();
-            cursos.Insert(0, new Curso() { IdCurso = 0, NomeCurso = "Selecione o Curso" });
+            var cursos = _context.Cursos.OrderBy(i => i.Nome).ToList();
+            cursos.Insert(0, new Curso() { Id = 0, Nome = "Selecione o Curso" });
             ViewBag.Cursos = cursos;
                 return View();
         }
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Periodo", "NomeTurma", "NomeCurso, IdCurso")] Turma turma)
+        public async Task<IActionResult> Create([Bind("Periodo", "Sigla", "IdCurso")] Turma turma)
         {
             try
             {
@@ -59,20 +59,20 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var turma = await _context.Turmas.SingleOrDefaultAsync(m => m.IdTurma == id);
+            var turma = await _context.Turmas.SingleOrDefaultAsync(m => m.Id == id);
             if (turma == null)
             {
                 return NotFound();
             }
-            ViewBag.Cursos = new SelectList(_context.Cursos.OrderBy(b => b.NomeCurso), "IdCurso", "NomeCurso", turma.IdCurso);
+            ViewBag.Cursos = new SelectList(_context.Cursos.OrderBy(b => b.Nome), "Id", "Nome", turma.IdCurso);
             return View(turma);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IdTurma, Periodo, NomeTurma, IdCurso")] Turma turma)
+        public async Task<IActionResult> Edit(long? id, [Bind("Id", "Periodo", "Sigla", "IdCurso")] Turma turma)
         {
-            if (id != turma.IdTurma)
+            if (id != turma.Id)
             {
                 return NotFound();
             }
@@ -85,7 +85,7 @@ namespace Tcc_Senai.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TurmaExists(turma.IdTurma))
+                    if (!TurmaExists(turma.Id))
                     {
                         NotFound();
 
@@ -100,12 +100,12 @@ namespace Tcc_Senai.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Cursos = new SelectList(_context.Cursos.OrderBy(b => b.NomeCurso), "IdCurso", "NomeCurso", turma.IdCurso);
+            ViewBag.Cursos = new SelectList(_context.Cursos.OrderBy(b => b.Nome), "Id", "Nome", turma.IdCurso);
             return View(turma);
         }
         private bool TurmaExists(long? id)
         {
-            return _context.Turmas.Any(e => e.IdTurma == id);
+            return _context.Turmas.Any(e => e.Id == id);
         }
 
         // GET: Turma/Delete/5
@@ -115,9 +115,9 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var turma = await _context.Turmas.SingleOrDefaultAsync(m => m.IdTurma == id);
+            var turma = await _context.Turmas.SingleOrDefaultAsync(m => m.Id == id);
             _context.Cursos.Where(i => turma.IdCurso ==
-            i.IdCurso).Load();
+            i.Id).Load();
             if (turma == null)
             {
                 return NotFound();
@@ -129,9 +129,9 @@ namespace Tcc_Senai.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id)
         {
-            var turma = await _context.Turmas.SingleOrDefaultAsync(m => m.IdTurma == id);
+            var turma = await _context.Turmas.SingleOrDefaultAsync(m => m.Id == id);
             _context.Turmas.Remove(turma);
-            TempData["Message"] = "Turma " + turma.NomeTurma.ToUpper() + "foi removido";
+            TempData["Message"] = "Turma " + turma.Sigla.ToUpper() + "foi removido";
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

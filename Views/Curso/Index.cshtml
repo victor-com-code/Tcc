@@ -32,14 +32,14 @@
                 <tr>
 
                     <th>
-                        @Html.DisplayNameFor(model => model.NomeCurso)
+                        @Html.DisplayNameFor(model => model.Nome)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Modalidade.NomeModalidade)
+                        @Html.DisplayNameFor(model => model.Modalidade.Nome)
 
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.UnidadeCurricular.NomeUnidadeCurricular)
+                        @*@Html.DisplayNameFor(model => model.UnidadeCurricular.Nome)*@
 
                     </th>
                     <th>
@@ -58,13 +58,13 @@
                     <tr>
 
                         <td>
-                            @Html.DisplayFor(modelItem => item.NomeCurso)
+                            @Html.DisplayFor(modelItem => item.Nome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Modalidade.NomeModalidade)
+                            @Html.DisplayFor(modelItem => item.Modalidade.Nome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.UnidadeCurricular.NomeUnidadeCurricular)
+                           '
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CargaHoraria)
@@ -74,8 +74,8 @@
                         </td>
 
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
-                            <a asp-action="Delete" asp-route-id="@item.IdCurso" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 }

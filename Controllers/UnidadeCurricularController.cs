@@ -19,7 +19,7 @@ namespace Tcc_Senai.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.UnidadeCurriculares.OrderBy(c =>
-            c.NomeUnidadeCurricular).ToListAsync());
+            c.Nome).ToListAsync());
         }
         // GET: UC Create
         public ActionResult Create()
@@ -29,7 +29,7 @@ namespace Tcc_Senai.Controllers
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUc", "NomeUnidadeCurricular")] UnidadeCurricular unidadecurricular)
+        public async Task<IActionResult> Create([Bind("Id", "Nome")] UnidadeCurricular unidadecurricular)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var unidadecurricular = await _context.UnidadeCurriculares.SingleOrDefaultAsync(m => m.IdUc == id);
+            var unidadecurricular = await _context.UnidadeCurriculares.SingleOrDefaultAsync(m => m.Id == id);
             if (unidadecurricular == null)
             {
                 return NotFound();
@@ -63,9 +63,9 @@ namespace Tcc_Senai.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IdUc", "NomeUnidadeCurricular")] UnidadeCurricular unidadecurricular)
+        public async Task<IActionResult> Edit(long? id, [Bind("Id", "Nome")] UnidadeCurricular unidadecurricular)
         {
-            if (id != unidadecurricular.IdUc)
+            if (id != unidadecurricular.Id)
             {
                 return NotFound();
             }
@@ -78,7 +78,7 @@ namespace Tcc_Senai.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UnidadeCurricularExists(unidadecurricular.IdUc))
+                    if (!UnidadeCurricularExists(unidadecurricular.Id))
                     {
                         NotFound();
 
@@ -96,7 +96,7 @@ namespace Tcc_Senai.Controllers
         }
         private bool UnidadeCurricularExists(long? id)
         {
-            return _context.UnidadeCurriculares.Any(e => e.IdUc == id
+            return _context.UnidadeCurriculares.Any(e => e.Id == id
             );
         }
 
@@ -107,7 +107,7 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var unidadecurricular = await _context.UnidadeCurriculares.SingleOrDefaultAsync(m => m.IdUc == id);
+            var unidadecurricular = await _context.UnidadeCurriculares.SingleOrDefaultAsync(m => m.Id == id);
             if (unidadecurricular == null)
             {
                 return NotFound();
@@ -119,7 +119,7 @@ namespace Tcc_Senai.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id)
         {
-            var unidadecurricular = await _context.UnidadeCurriculares.SingleOrDefaultAsync(m => m.IdUc == id);
+            var unidadecurricular = await _context.UnidadeCurriculares.SingleOrDefaultAsync(m => m.Id == id);
             _context.UnidadeCurriculares.Remove(unidadecurricular);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

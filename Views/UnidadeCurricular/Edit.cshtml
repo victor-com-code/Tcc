@@ -20,11 +20,11 @@
          <h2 class="title-view">Alterar unidade curricular</h2>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdUc" />
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="NomeUnidadeCurricular" class="control-label"></label>
-                <input asp-for="NomeUnidadeCurricular" class="form-control" />
-                <span asp-validation-for="NomeUnidadeCurricular" class="text-danger"></span>
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
 
             <div class="btn-icons" ,>

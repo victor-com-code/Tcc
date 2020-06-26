@@ -35,10 +35,10 @@
                         @Html.DisplayNameFor(model => model.Periodo)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.NomeTurma)
+                        @Html.DisplayNameFor(model => model.Sigla)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Curso.NomeCurso)
+                        @Html.DisplayNameFor(model => model.Curso.Nome)
 
                     </th>
                     <th></th>
@@ -52,14 +52,14 @@
                             @Html.DisplayFor(modelItem => item.Periodo)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.NomeTurma)
+                            @Html.DisplayFor(modelItem => item.Sigla)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Curso.NomeCurso)
+                            @Html.DisplayFor(modelItem => item.Curso.Nome)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.IdTurma" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
-                            <a asp-action="Delete" asp-route-id="@item.IdTurma" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 }
