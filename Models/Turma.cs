@@ -23,7 +23,7 @@ namespace Tcc_Senai.Models
 
         public string Sigla { get; set; }
 
-        public DateTime Ano { get; set; }
+        public int Ano { get; set; }
 
         public int Semestre { get; set; }
 

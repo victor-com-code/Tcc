@@ -21,8 +21,6 @@ namespace Tcc_Senai.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Turmas.Include(i => i.Curso).OrderBy(c => c.Sigla).ToListAsync());
-          
-
         }
         // GET: Turma Create
         public ActionResult Create()
@@ -35,7 +33,7 @@ namespace Tcc_Senai.Controllers
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Periodo", "IdCurso", "Sigla", "Ano", "Semestre")] Turma turma)
+        public async Task<IActionResult> Create([Bind("Id", "Periodo", "IdCurso", "Sigla", "Ano", "Semestre")] Turma turma)
         {
             try
             {
@@ -73,7 +71,7 @@ namespace Tcc_Senai.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("Periodo", "IdCurso", "Sigla", "Ano", "Semestre")] Turma turma)
+        public async Task<IActionResult> Edit(long? id, [Bind("Id", "Periodo", "IdCurso", "Sigla", "Ano", "Semestre")] Turma turma)
         {
             if (id != turma.Id)
             {
@@ -134,7 +132,7 @@ namespace Tcc_Senai.Controllers
         {
             var turma = await _context.Turmas.SingleOrDefaultAsync(m => m.Id == id);
             _context.Turmas.Remove(turma);
-            TempData["Message"] = "Turma " + turma.Sigla.ToUpper() + "foi removido";
+            TempData["Message"] = "Turma " + turma.Sigla.ToUpper() + " foi removido";
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
