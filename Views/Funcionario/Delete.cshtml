@@ -10,13 +10,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Deletar Funcionario</title>
+    <title>Deletar Funcionário</title>
 </head>
 <body>
     <hr />
     <div class="row">
         <div class="col-12 col-sm-12 col-md-6 offset-md-3">
-            <h2 class="title-view">Deletar Funcionario</h2>
+            <h2 class="title-view">Deletar Funcionário</h2>
             <form asp-action="Delete">
                 <input type="hidden" asp-for="Id" />
                 <dl class="row">
@@ -31,6 +31,18 @@
                     </dt>
                     <dd class="col-sm-8">
                         @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.Perfil)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.Perfil)
+                    </dd>
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.Contrato)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.Contrato)
                     </dd>
                     <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.Horario)

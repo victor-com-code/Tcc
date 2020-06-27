@@ -10,50 +10,63 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Alterar Funcionario</title>
+    <title>Alterar Funcionário</title>
 </head>
 <body>
 
 <hr />
 <div class="row">
     <div class="col-12 col-sm-12 col-md-6 offset-md-3">
-         <h2 class="title-view">Alterar Funcionario</h2>
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="NomeCompleto" class="control-label"></label>
-                <input asp-for="NomeCompleto" class="form-control" />
-                <span asp-validation-for="NomeCompleto" class="text-danger"></span>
-            </div>
+         <h2 class="title-view">Alterar Funcionário</h2>
+         <form asp-action="Edit">
+             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <input type="hidden" asp-for="Id" />
              <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                 <label asp-for="NomeCompleto" class="control-label"></label>
+                 <input asp-for="NomeCompleto" class="form-control" />
+                 <span asp-validation-for="NomeCompleto" class="text-danger"></span>
              </div>
-            <div class="form-group">
-                <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" />
-                <span asp-validation-for="Senha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Horario" class="control-label"></label>
-                <input asp-for="Horario" class="form-control" />
-                <span asp-validation-for="Horario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CargaHorariaSemanal" class="control-label"></label>
-                <input asp-for="CargaHorariaSemanal" class="form-control" />
-                <span asp-validation-for="CargaHorariaSemanal" class="text-danger"></span>
-            </div>
+             <div class="form-group">
+                 <label asp-for="Email" class="control-label"></label>
+                 <input asp-for="Email" class="form-control" />
+                 <span asp-validation-for="Email" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                 <label asp-for="Senha" class="control-label"></label>
+                 <input asp-for="Senha" class="form-control" />
+                 <span asp-validation-for="Senha" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                 <label asp-for="ConfirmarSenha" class="control-label"></label>
+                 <input type="password" asp-for="ConfirmarSenha" class="form-control" />
+                 <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                 <label asp-for="IdPerfil" class="control-label"></label>
+                 <select asp-for="IdPerfil" class="form-control" asp-items="@(new SelectList(@ViewBag.Perfis, "Id", "Nome"))"></select>
+             </div>
+             <div class="form-group">
+                 <label asp-for="IdContrato" class="control-label"></label>
+                 <select asp-for="IdContrato" class="form-control" asp-items="@(new SelectList(@ViewBag.Contratos, "Id", "Nome"))"></select>
+             </div>
+             <div class="form-group">
+                 <label asp-for="Horario" class="control-label"></label>
+                 <input asp-for="Horario" class="form-control" />
+                 <span asp-validation-for="Horario" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                 <label asp-for="CargaHorariaSemanal" class="control-label"></label>
+                 <input asp-for="CargaHorariaSemanal" class="form-control" />
+                 <span asp-validation-for="CargaHorariaSemanal" class="text-danger"></span>
+             </div>
 
-            <div class="btn-icons" ,>
-                <a asp-action="Index" class="i-font-50">
-                    <i class="fas fa-chevron-circle-left"></i>
-                </a>
-                <button class="btn-submit i-font-50"><i class="fas fa-save"></i></button>
-            </div>
-        </form>
+             <div class="btn-icons" ,>
+                 <a asp-action="Index" class="i-font-50">
+                     <i class="fas fa-chevron-circle-left"></i>
+                 </a>
+                 <button class="btn-submit i-font-50"><i class="fas fa-save"></i></button>
+             </div>
+         </form>
     </div>
 </div>
 
