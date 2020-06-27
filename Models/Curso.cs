@@ -13,6 +13,7 @@ namespace Tcc_Senai.Models
         [Display(Name = "Curso")]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "O campo Modalidade é obrigatório.")]
         [ForeignKey("Modalidade")]
         [Display(Name = "Modalidade")]
         public long IdMod { get; set; }
