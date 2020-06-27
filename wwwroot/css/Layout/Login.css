@@ -24,3 +24,18 @@ label {
     font-size: 16px;
     border-radius: 10px;
 }
+
+.btn-login {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    color:#1574bf;
+}
+
+.btn-login:hover {
+    background-color: rgb(70, 195, 80);
+    color: white;
+}

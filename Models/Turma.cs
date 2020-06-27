@@ -12,13 +12,6 @@ namespace Tcc_Senai.Models
         [Key]
         public long Id { get; set; }
 
-        [Required(ErrorMessage = "O campo Período é obrigatório.")]
-        [Display(Name = "Período")]
-        public string Periodo { get; set; }
-
-        [MaxLength(4)]
-        public string Sigla { get; set; }
-
         [Display (Name= "Curso")]
         [ForeignKey("Curso")]
         public long IdCurso { get; set; }
