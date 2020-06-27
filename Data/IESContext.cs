@@ -10,7 +10,7 @@ namespace Tcc_Senai.Data
         {
         }
 
-        public DbSet<Funcionario> Funcionario { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Modalidade> Modalidades { get; set; }
         public DbSet<Curso> Cursos { get; set; }
         public DbSet<CursoUnidadeCurricular> CursoUnidadeCurriculares { get; set; }

@@ -20,7 +20,7 @@ namespace Tcc_Senai.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Funcionario.OrderBy(c =>
+            return View(await _context.Funcionarios.OrderBy(c =>
             c.NomeCompleto).ToListAsync());
         }
 
@@ -54,7 +54,7 @@ namespace Tcc_Senai.Controllers
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id", "NomeCompleto", "Email", "Senha", "ConfirmarSenha", "IdPerfil", "IdContrato", "Horario","CargaHorariaSemanal")] Funcionario funcionario)
+        public async Task<IActionResult> Create([Bind("Id", "NomeCompleto", "Email", "Senha", "ConfirmarSenha", "IdPerfil", "IdContrato", "Horario", "CargaHorariaSemanal")] Funcionario funcionario)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var Funcionario = await _context.Funcionario.SingleOrDefaultAsync(m => m.Id == id);
+            var Funcionario = await _context.Funcionarios.SingleOrDefaultAsync(m => m.Id == id);
             if (Funcionario == null)
             {
                 return NotFound();
@@ -126,7 +126,7 @@ namespace Tcc_Senai.Controllers
         }
         private bool FuncionarioExists(long? id)
         {
-            return _context.Funcionario.Any(e => e.Id == id
+            return _context.Funcionarios.Any(e => e.Id == id
             );
         }
        
@@ -137,7 +137,7 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var Funcionario = await _context.Funcionario.SingleOrDefaultAsync(m => m.Id == id);
+            var Funcionario = await _context.Funcionarios.SingleOrDefaultAsync(m => m.Id == id);
             if (Funcionario == null)
             {
                 return NotFound();
@@ -149,8 +149,8 @@ namespace Tcc_Senai.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id)
         {
-            var Funcionario = await _context.Funcionario.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Funcionario.Remove(Funcionario);
+            var Funcionario = await _context.Funcionarios.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Funcionarios.Remove(Funcionario);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

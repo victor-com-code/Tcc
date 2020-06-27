@@ -32,17 +32,20 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Periodo)
+                        @Html.DisplayNameFor(model => model.Curso.Nome)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Curso.Nome)
-
+                        @Html.DisplayNameFor(model => model.Modulo)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Sigla)
                     </th>
-                    <th>@Html.DisplayNameFor(model => model.Ano)</th>
-                    <th>@Html.DisplayNameFor(model => model.Semestre)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ano)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Semestre)
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -50,10 +53,10 @@
                 {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Periodo)
+                        @Html.DisplayFor(modelItem => item.Curso.Nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Curso.Nome)
+                        @Html.DisplayFor(modelItem => item.Modulo)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Sigla)

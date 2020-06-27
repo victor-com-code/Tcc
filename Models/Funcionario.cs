@@ -38,7 +38,7 @@ namespace Tcc_Senai.Models
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "O campo Confirmar Senha é obrigatório.")]
-        [Compare("Senha", ErrorMessage = "Senha e Confirmar Senha não são as mesmas.")]
+        [Compare("Senha", ErrorMessage = "Senha e confirmação não são as mesmas.")]
         [MaxLength(20)]
         [Display(Name = "Confirmar Senha")]
         public string ConfirmarSenha { get; set; }
@@ -46,7 +46,7 @@ namespace Tcc_Senai.Models
         [Required(ErrorMessage = "O campo Horário de Trabalho é obrigatório.")]
         [Display(Name = "Horário de Trabalho")]
         [Range(1, 10, ErrorMessage = "A jornada de trabalho diária não pode ultrapassar 10 horas.")]
-        public int Horario { get; set; }
+        public int? Horario { get; set; }
 
         [Required(ErrorMessage = "O campo Carga Horária Semanal é obrigatório.")]
         [Display(Name = "Carga Horária Semanal")]
@@ -55,5 +55,8 @@ namespace Tcc_Senai.Models
 
         public List<FuncionarioCurso> FuncionarioCursos { get; set; }
 
+        // Falta Perfil
+
+        // Falta Contrato
     }
 }
