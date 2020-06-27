@@ -28,12 +28,10 @@
                         @Html.DisplayNameFor(model => model.Email)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Perfil.Nome)
-
+                        @Html.DisplayNameFor(model => model.Perfil.Nivel)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Contrato.Nome)
-
+                        @Html.DisplayNameFor(model => model.Contrato.Tipo)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Horario)
@@ -41,7 +39,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.CargaHorariaSemanal)
                     </th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -55,12 +52,11 @@
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Perfil.Nome)
+                        @Html.DisplayFor(modelItem => item.Perfil.Nivel)
                     </td>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Contrato.Nome)
-
-                    </th>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Contrato.Tipo)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Horario)
                     </td>

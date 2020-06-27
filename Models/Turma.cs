@@ -16,12 +16,16 @@ namespace Tcc_Senai.Models
         [Display(Name = "Período")]
         public string Periodo { get; set; }
 
-        public string Sigla { get; set; }
-
-        [Display (Name= "Curso")]
+        [Display(Name = "Curso")]
         [ForeignKey("Curso")]
         public long IdCurso { get; set; }
         public virtual Curso Curso { get; set; }
+
+        public string Sigla { get; set; }
+
+        public DateTime Ano { get; set; }
+
+        public int Semestre { get; set; }
 
     }
 }

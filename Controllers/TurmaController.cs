@@ -30,12 +30,12 @@ namespace Tcc_Senai.Controllers
             var cursos = _context.Cursos.OrderBy(i => i.Nome).ToList();
             cursos.Insert(0, new Curso() { Id = 0, Nome = "Selecione o Curso" });
             ViewBag.Cursos = cursos;
-                return View();
+            return View();
         }
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Periodo", "Sigla", "IdCurso")] Turma turma)
+        public async Task<IActionResult> Create([Bind("Periodo", "IdCurso", "Sigla", "Ano", "Semestre")] Turma turma)
         {
             try
             {
@@ -50,6 +50,9 @@ namespace Tcc_Senai.Controllers
             {
                 ModelState.AddModelError("", "Não foi possível inserir os dados.");
             }
+            var cursos = _context.Cursos.OrderBy(i => i.Nome).ToList();
+            cursos.Insert(0, new Curso() { Id = 0, Nome = "Selecione o Curso" });
+            ViewBag.Cursos = cursos;
             return View(turma);
         }
         // GET: Turma/Edit/5
@@ -64,13 +67,13 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            ViewBag.Cursos = new SelectList(_context.Cursos.OrderBy(b => b.Nome), "Id", "Nome", turma.IdCurso);
+            ViewBag.Cursos = _context.Cursos.OrderBy(b => b.Nome).ToList();
             return View(turma);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("Id", "Periodo", "Sigla", "IdCurso")] Turma turma)
+        public async Task<IActionResult> Edit(long? id, [Bind("Periodo", "IdCurso", "Sigla", "Ano", "Semestre")] Turma turma)
         {
             if (id != turma.Id)
             {
@@ -100,7 +103,7 @@ namespace Tcc_Senai.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Cursos = new SelectList(_context.Cursos.OrderBy(b => b.Nome), "Id", "Nome", turma.IdCurso);
+            ViewBag.Cursos = _context.Cursos.OrderBy(b => b.Nome).ToList();
             return View(turma);
         }
         private bool TurmaExists(long? id)

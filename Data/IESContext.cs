@@ -12,12 +12,13 @@ namespace Tcc_Senai.Data
 
         public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<Modalidade> Modalidades { get; set; }
-       
         public DbSet<Curso> Cursos { get; set; }
         public DbSet<CursoUnidadeCurricular> CursoUnidadeCurriculares { get; set; }
         public DbSet<Turma> Turmas { get; set; }
         public DbSet<UnidadeCurricular> UnidadeCurriculares { get; set; }
-        //public DbSet<FuncionarioCurso> FuncionarioCursos { get; set; }
+        public DbSet<Contrato> Contratos { get; set; }
+        public DbSet<Perfil> Perfis { get; set; }
+        public DbSet<FuncionarioCurso> FuncionarioCursos { get; set; }
 
         //public DbSet<GerarCurso> GerarCursos { get; set; }
         //public DbSet<Pedagogo> Pedagogos { get; set; }
