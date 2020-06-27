@@ -19,7 +19,7 @@ namespace Tcc_Senai.Models
         public virtual Perfil Perfil { get; set; }
 
         [ForeignKey("Contrato")]
-        [Display(Name = "Perfil")]
+        [Display(Name = "Contrato")]
         public long IdContrato { get; set; }
         public virtual Contrato Contrato { get; set; }
 

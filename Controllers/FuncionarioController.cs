@@ -42,7 +42,7 @@ namespace Tcc_Senai.Controllers
         public ActionResult Create()
         {
             var perfis = _context.Perfis.OrderBy(i => i.Nivel).ToList();
-            perfis.Insert(0, new Perfil() { Id = 0, Nivel = "Selecione o Perfil de Usuário" });
+            perfis.Insert(0, new Perfil() { Id = 0, Nivel = "Selecione o Perfil de Funcionário" });
             ViewBag.Perfis = perfis;
 
             var contratos = _context.Contratos.OrderBy(i => i.Tipo).ToList();

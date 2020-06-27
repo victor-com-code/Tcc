@@ -13,7 +13,7 @@ namespace Tcc_Senai.Data
             //context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            //populando Modalidades
+            //Populando Modalidades
             if (context.Modalidades.Any())
             {
                 return;
@@ -30,7 +30,7 @@ namespace Tcc_Senai.Data
                 context.Modalidades.Add(d);
             }
 
-            //populando perfis
+            //Populando Perfis
             if (context.Perfis.Any())
             {
                 return;
@@ -45,7 +45,6 @@ namespace Tcc_Senai.Data
             {
                 context.Perfis.Add(p);
             }
-
 
             if (context.Contratos.Any())
             {
@@ -62,6 +61,24 @@ namespace Tcc_Senai.Data
             {
                 context.Contratos.Add(c);
             }
+
+            //Populando Unidades Curriculares
+            if (context.UnidadeCurriculares.Any())
+            {
+                return;
+            }
+            var unidadesCurriculares = new UnidadeCurricular[]
+            {
+                new UnidadeCurricular {Nome="Lógica de Programação"},
+                new UnidadeCurricular {Nome="Informática Aplicada"},
+                new UnidadeCurricular {Nome="Fundamentos da Tecnologia da Informação"},
+                new UnidadeCurricular {Nome="Comunicação oral e escrita"}
+            };
+            foreach (UnidadeCurricular d in unidadesCurriculares)
+            {
+                context.UnidadeCurriculares.Add(d);
+            }
+
             context.SaveChanges();
         }
     }

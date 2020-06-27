@@ -20,7 +20,7 @@ namespace Tcc_Senai.Models
 
         [Required(ErrorMessage = "O campo Carga Horária é obrigatório.")]
         [Display(Name = "Carga Horária")]
-        public int CargaHoraria { get; set; }
+        public int? CargaHoraria { get; set; }
 
         [Required(ErrorMessage = "O campo Sigla é obrigatório.")]
         [MaxLength(3)]
