@@ -33,7 +33,7 @@ namespace Tcc_Senai.Controllers
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id", "Periodo", "IdCurso", "Sigla", "Ano", "Semestre")] Turma turma)
+        public async Task<IActionResult> Create([Bind("Id", "IdCurso", "Modulo", "Sigla", "Ano", "Semestre")] Turma turma)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Tcc_Senai.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("Id", "Periodo", "IdCurso", "Sigla", "Ano", "Semestre")] Turma turma)
+        public async Task<IActionResult> Edit(long? id, [Bind("Id", "IdCurso", "Modulo", "Sigla", "Ano", "Semestre")] Turma turma)
         {
             if (id != turma.Id)
             {

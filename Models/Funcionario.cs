@@ -15,12 +15,12 @@ namespace Tcc_Senai.Models
 
         [ForeignKey("Perfil")]
         [Display(Name = "Perfil")]
-        public int IdPerfil { get; set; }
+        public long IdPerfil { get; set; }
         public virtual Perfil Perfil { get; set; }
 
         [ForeignKey("Contrato")]
         [Display(Name = "Perfil")]
-        public int IdContrato { get; set; }
+        public long IdContrato { get; set; }
         public virtual Contrato Contrato { get; set; }
 
         [Required(ErrorMessage = "O campo Nome Completo é obrigatório.")]

@@ -62,7 +62,6 @@ namespace Tcc_Senai.Data
             {
                 context.Contratos.Add(c);
             }
-
             context.SaveChanges();
         }
     }
