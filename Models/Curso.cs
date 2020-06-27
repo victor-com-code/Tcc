@@ -11,6 +11,7 @@ namespace Tcc_Senai.Models
 
         [Required(ErrorMessage = "O campo Curso é obrigatório.")]
         [Display(Name = "Curso")]
+        [MaxLength(3)]
         public string Nome { get; set; }
 
         [ForeignKey("Modalidade")]

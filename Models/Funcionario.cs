@@ -50,7 +50,7 @@ namespace Tcc_Senai.Models
 
         [Required(ErrorMessage = "O campo Carga Horária Semanal é obrigatório.")]
         [Display(Name = "Carga Horária Semanal")]
-        [Range(1, 70, ErrorMessage = "A jornada de trabalho semanal não pode ultrapassar 70 horas.")]
+        [Range(1, 70, ErrorMessage = "A jornada de trabalho semanal não pode ultrapassar 60 horas.")]
         public int? CargaHorariaSemanal { get; set; }
 
         public List<FuncionarioCurso> FuncionarioCursos { get; set; }

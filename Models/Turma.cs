@@ -16,6 +16,7 @@ namespace Tcc_Senai.Models
         [Display(Name = "Período")]
         public string Periodo { get; set; }
 
+        [MaxLength(4)]
         public string Sigla { get; set; }
 
         [Display (Name= "Curso")]
