@@ -24,6 +24,20 @@ namespace Tcc_Senai.Controllers
             c.NomeCompleto).ToListAsync());
         }
 
+        // GET: Funcionario Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Funcionario Login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login([Bind("Email", "Senha")] Curso curso)
+        {
+            return View();
+        }
+
         // GET: Funcionario Create
         public ActionResult Create()
         {
