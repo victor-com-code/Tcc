@@ -35,33 +35,40 @@
                         @Html.DisplayNameFor(model => model.Periodo)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Sigla)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.Curso.Nome)
 
                     </th>
-                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sigla)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.Ano)</th>
+                    <th>@Html.DisplayNameFor(model => model.Semestre)</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Periodo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Sigla)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Curso.Nome)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Periodo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Curso.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sigla)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ano)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Semestre)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-pencil-alt"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

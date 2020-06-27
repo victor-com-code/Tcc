@@ -22,13 +22,21 @@ namespace Tcc_Senai.Controllers
         {
             return View(await _context.Funcionario.OrderBy(c =>
             c.NomeCompleto).ToListAsync());
-            
         }
+
         // GET: Funcionario Create
         public ActionResult Create()
         {
+            var perfis = _context.Perfis.OrderBy(i => i.Nivel).ToList();
+            perfis.Insert(0, new Perfil() { Id = 0, Nivel = "Selecione o Perfil de Usuário" });
+            ViewBag.Perfis = perfis;
+
+            var contratos = _context.Contratos.OrderBy(i => i.Tipo).ToList();
+            contratos.Insert(0, new Contrato() { Id = 0, Tipo = "Selecione o Tipo de Contrato do Funcionário" });
+            ViewBag.Contratos = contratos;
             return View();
         }
+
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -47,6 +55,9 @@ namespace Tcc_Senai.Controllers
             {
                 ModelState.AddModelError("", "Não foi possível inserir os dados.");
             }
+       
+            ViewBag.Perfis = _context.Perfis.OrderBy(i => i.Nivel).ToList();
+            ViewBag.Contratos = _context.Contratos.OrderBy(i => i.Tipo).ToList(); 
             return View(funcionario);
         }
         // GET: Funcionario/Edit/5
@@ -61,6 +72,8 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Perfis = _context.Perfis.OrderBy(i => i.Nivel).ToList();
+            ViewBag.Contratos = _context.Contratos.OrderBy(i => i.Tipo).ToList();
             return View(Funcionario);
         }
         

@@ -11,21 +11,36 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+
             <div class="form-group">
                 <label asp-for="Periodo" class="control-label">
                 </label>
                 <input asp-for="Periodo" class="form-control" />
                 <span asp-validation-for="Periodo" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="IdCurso" class="control-label"></label>
+                <select asp-for="IdCurso" class="form-control" asp-items="@(new SelectList(@ViewBag.Cursos, "Id", "Nome"))"></select>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Sigla" class="control-label">
                 </label>
                 <input asp-for="Sigla" class="form-control" />
                 <span asp-validation-for="Sigla" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="IdCurso" class="control-label"></label>
-                <select asp-for="IdCurso" class="form-control" asp-items=@ViewBag.Cursos></select>
+                <label asp-for="Ano" class="control-label"></label>
+                <input asp-for="Ano" class="form-control" />
+                <span asp-validation-for="Ano" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Semestre" class="control-label"></label>
+                <input asp-for="Semestre" class="form-control" />
+                <span asp-validation-for="Semestre" class="text-danger"></span>
             </div>
 
             <div class="btn-icons" ,>
