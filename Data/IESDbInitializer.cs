@@ -25,9 +25,9 @@ namespace Tcc_Senai.Data
                 new Modalidade {Nome="Aperfeiçoamento"},
                 new Modalidade {Nome="Avançado"}
             };
-            foreach (Modalidade d in modalidades)
+            foreach (Modalidade m in modalidades)
             {
-                context.Modalidades.Add(d);
+                context.Modalidades.Add(m);
             }
 
             //Populando Perfis
@@ -46,6 +46,7 @@ namespace Tcc_Senai.Data
                 context.Perfis.Add(p);
             }
 
+            //Populando Contratos
             if (context.Contratos.Any())
             {
                 return;
@@ -74,9 +75,9 @@ namespace Tcc_Senai.Data
                 new UnidadeCurricular {Nome="Fundamentos da Tecnologia da Informação"},
                 new UnidadeCurricular {Nome="Comunicação oral e escrita"}
             };
-            foreach (UnidadeCurricular d in unidadesCurriculares)
+            foreach (UnidadeCurricular u in unidadesCurriculares)
             {
-                context.UnidadeCurriculares.Add(d);
+                context.UnidadeCurriculares.Add(u);
             }
 
             context.SaveChanges();

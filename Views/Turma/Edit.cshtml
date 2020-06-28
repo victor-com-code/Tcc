@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Semestre" class="control-label"></label>
-                <input asp-for="Semestre" class="form-control" />
+                <select asp-for="Semestre" class="form-control" asp-items="@ViewBag.Semestre"></select>
                 <span asp-validation-for="Semestre" class="text-danger"></span>
             </div>
             <div class="btn-icons" ,>
@@ -48,5 +48,3 @@
 @section ScriptPage {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }*@
-}
-

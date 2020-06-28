@@ -28,6 +28,13 @@ namespace Tcc_Senai.Controllers
             var cursos = _context.Cursos.OrderBy(i => i.Nome).ToList();
             cursos.Insert(0, new Curso() { Id = 0, Nome = "Selecione o Curso" });
             ViewBag.Cursos = cursos;
+
+            ViewBag.Semestre = new[]
+            {
+                new SelectListItem(){ Value = "", Text = "Selecione o Semestre"},
+                new SelectListItem(){ Value = "1º Semestre", Text = "1º Semestre"},
+                new SelectListItem(){ Value = "2º Semestre", Text = "2º Semestre"}
+            };
             return View();
         }
         //POST: Create
@@ -51,6 +58,13 @@ namespace Tcc_Senai.Controllers
             var cursos = _context.Cursos.OrderBy(i => i.Nome).ToList();
             cursos.Insert(0, new Curso() { Id = 0, Nome = "Selecione o Curso" });
             ViewBag.Cursos = cursos;
+
+            ViewBag.Semestre = new[]
+            {
+                new SelectListItem(){ Value = "", Text = "Selecione o Semestre"},
+                new SelectListItem(){ Value = "1º Semestre", Text = "1º Semestre"},
+                new SelectListItem(){ Value = "2º Semestre", Text = "2º Semestre"}
+            };
             return View(turma);
         }
         // GET: Turma/Edit/5
@@ -66,6 +80,13 @@ namespace Tcc_Senai.Controllers
                 return NotFound();
             }
             ViewBag.Cursos = _context.Cursos.OrderBy(b => b.Nome).ToList();
+
+            ViewBag.Semestre = new[]
+            {
+                new SelectListItem(){ Value = "", Text = "Selecione o Semestre"},
+                new SelectListItem(){ Value = "1º Semestre", Text = "1º Semestre"},
+                new SelectListItem(){ Value = "2º Semestre", Text = "2º Semestre"}
+            };
             return View(turma);
         }
 
@@ -102,6 +123,13 @@ namespace Tcc_Senai.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.Cursos = _context.Cursos.OrderBy(b => b.Nome).ToList();
+
+            ViewBag.Semestre = new[]
+            {
+                new SelectListItem(){ Value = "", Text = "Selecione o Semestre"},
+                new SelectListItem(){ Value = "1º Semestre", Text = "1º Semestre"},
+                new SelectListItem(){ Value = "2º Semestre", Text = "2º Semestre"}
+            };
             return View(turma);
         }
         private bool TurmaExists(long? id)
