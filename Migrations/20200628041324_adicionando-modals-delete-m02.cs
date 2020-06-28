@@ -2,7 +2,7 @@
 
 namespace Tcc_Senai.Migrations
 {
-    public partial class Segundo : Migration
+    public partial class adicionandomodalsdeletem02 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
