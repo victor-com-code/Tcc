@@ -32,8 +32,8 @@ namespace Tcc_Senai.Controllers
             ViewBag.Semestre = new[]
             {
                 new SelectListItem(){ Value = "", Text = "Selecione o Semestre"},
-                new SelectListItem(){ Value = "1º Semestre", Text = "1º Semestre"},
-                new SelectListItem(){ Value = "2º Semestre", Text = "2º Semestre"}
+                new SelectListItem(){ Value = "Primeiro", Text = "Primeiro"},
+                new SelectListItem(){ Value = "Segundo", Text = "Segundo"}
             };
             return View();
         }
@@ -62,8 +62,8 @@ namespace Tcc_Senai.Controllers
             ViewBag.Semestre = new[]
             {
                 new SelectListItem(){ Value = "", Text = "Selecione o Semestre"},
-                new SelectListItem(){ Value = "1º Semestre", Text = "1º Semestre"},
-                new SelectListItem(){ Value = "2º Semestre", Text = "2º Semestre"}
+                new SelectListItem(){ Value = "Primeiro", Text = "Primeiro"},
+                new SelectListItem(){ Value = "Segundo", Text = "Segundo"}
             };
             return View(turma);
         }
@@ -84,8 +84,8 @@ namespace Tcc_Senai.Controllers
             ViewBag.Semestre = new[]
             {
                 new SelectListItem(){ Value = "", Text = "Selecione o Semestre"},
-                new SelectListItem(){ Value = "1º Semestre", Text = "1º Semestre"},
-                new SelectListItem(){ Value = "2º Semestre", Text = "2º Semestre"}
+                new SelectListItem(){ Value = "Primeiro", Text = "Primeiro"},
+                new SelectListItem(){ Value = "Segundo", Text = "Segundo"}
             };
             return View(turma);
         }
@@ -127,8 +127,8 @@ namespace Tcc_Senai.Controllers
             ViewBag.Semestre = new[]
             {
                 new SelectListItem(){ Value = "", Text = "Selecione o Semestre"},
-                new SelectListItem(){ Value = "1º Semestre", Text = "1º Semestre"},
-                new SelectListItem(){ Value = "2º Semestre", Text = "2º Semestre"}
+                new SelectListItem(){ Value = "Primeiro", Text = "Primeiro"},
+                new SelectListItem(){ Value = "Segundo", Text = "Segundo"}
             };
             return View(turma);
         }

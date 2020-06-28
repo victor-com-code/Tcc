@@ -10,8 +10,8 @@ using Tcc_Senai.Data;
 namespace Tcc_Senai.Migrations
 {
     [DbContext(typeof(IESContext))]
-    [Migration("20200628011607_Terceira")]
-    partial class Terceira
+    [Migration("20200628032413_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
