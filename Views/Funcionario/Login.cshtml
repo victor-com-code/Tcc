@@ -26,7 +26,11 @@
                         </font>
                     </h1>
                 </div>
-             </div>
+            </div>
+            @if (ViewData["MSG_ER"] != null)
+            {
+                <p class="alert alert-danger"> @ViewData["MSG_ER"] </p>
+            }
             <form asp-action="Login">
                 <div class="form-group">
                     <label asp-for="Email" class="control-label"></label>
@@ -39,7 +43,7 @@
                     <span asp-validation-for="Senha" class="text-danger"></span>
                 </div>
 
-                <button class="btn-login">ENTRAR</button>
+                <button class="btn-login" type="submit">ENTRAR</button>
             </form>
         </div>
     </div>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tcc_Senai.Data;
@@ -33,8 +34,27 @@ namespace Tcc_Senai.Controllers
         // POST: Funcionario Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind("Email", "Senha")] Curso curso)
+        public async Task<IActionResult> Login([Bind("Email", "Senha")] Funcionario funcionario)
         {
+            try
+            {
+                var user = _context.Funcionarios.Where(u => u.Email.Equals(funcionario.Email)).FirstOrDefault();
+                if (user != null)
+                {
+                    if (user.Senha.Equals(funcionario.Senha))
+                    {
+                        //HttpContext.Session.Set("SessionId", new byte[] { Convert.ToByte(user.Id) });
+                        //HttpContext.Session.SetString("Funcionario", user.NomeCompleto);
+                        //HttpContext.Session.SetString("Perfil", Convert.ToString(user.IdPerfil));
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                ViewData["MSG_ER"] = "E-mail ou Senha Incorretos! Tente Novamente.";
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             return View();
         }
 
