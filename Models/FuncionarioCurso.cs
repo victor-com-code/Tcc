@@ -9,9 +9,9 @@ namespace Tcc_Senai.Models
 {
     public class FuncionarioCurso
     {
-        public int IdCurso { get; set; }
+        public long IdCurso { get; set; }
         public Curso Curso { get; set; }
-        public int IdFunc { get; set; }
+        public long IdFunc { get; set; }
         public Funcionario Funcionario { get; set; }
 
     }

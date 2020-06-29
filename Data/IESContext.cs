@@ -19,6 +19,7 @@ namespace Tcc_Senai.Data
         public DbSet<Contrato> Contratos { get; set; }
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<FuncionarioCurso> FuncionarioCursos { get; set; }
+        public DbSet<Aula> Aulas { get; set; }
 
         //public DbSet<GerarCurso> GerarCursos { get; set; }
         //public DbSet<Pedagogo> Pedagogos { get; set; }

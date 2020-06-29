@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Tcc_Senai.Data;
 using Tcc_Senai.Models;
@@ -68,21 +69,40 @@ namespace Tcc_Senai.Controllers
             var contratos = _context.Contratos.OrderBy(i => i.Tipo).ToList();
             contratos.Insert(0, new Contrato() { Id = 0, Tipo = "Selecione o Tipo de Contrato do Funcionário" });
             ViewBag.Contratos = contratos;
+
+            var cursos = _context.Cursos.OrderBy(c => c.Nome).ToList();
+            cursos.Insert(0, new Curso() { Id = 0, Nome = "Selecione os Cursos que esse Funcionário está relacionado" });
+            ViewBag.Cursos = new MultiSelectList(cursos, "Id", "Nome"); 
             return View();
         }
 
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id", "NomeCompleto", "Email", "Senha", "ConfirmarSenha", "IdPerfil", "IdContrato", "Horario", "CargaHorariaSemanal")] Funcionario funcionario)
+        public async Task<IActionResult> Create([Bind("Id", "NomeCompleto", "Email", "Senha", "ConfirmarSenha", "IdPerfil", "IdContrato", "Horario", "CargaHorariaSemanal")] Funcionario funcionario, int[] Idcursos)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Add(funcionario);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    if (!haveFuncionario(funcionario))
+                    {
+                        _context.Add(funcionario);
+                        await _context.SaveChangesAsync();
+
+                        var currentFuncionario = _context.Funcionarios.Where(f => f.Email.Equals(funcionario.Email)).SingleOrDefault();
+
+                        foreach (var curso in Idcursos)
+                        {
+                            FuncionarioCurso funcionarioCurso = new FuncionarioCurso();
+                            funcionarioCurso.IdCurso = curso;
+                            funcionarioCurso.IdFunc = currentFuncionario.Id;
+                            _context.Add(funcionarioCurso);
+                            await _context.SaveChangesAsync();
+                        }
+                        return RedirectToAction(nameof(Index));
+                    }
+                    ViewData["MSG_E"] = "Já existe um Funcionario cadastrado com esse e-mail.";
                 }
             }
             catch (DbUpdateException)
@@ -98,6 +118,10 @@ namespace Tcc_Senai.Controllers
             contratos.Insert(0, new Contrato() { Id = 0, Tipo = "Selecione o Tipo de Contrato do Funcionário" });
             ViewBag.Contratos = contratos;
 
+            var cursos = _context.Cursos.OrderBy(c => c.Nome).ToList();
+            cursos.Insert(0, new Curso() { Id = 0, Nome = "Selecione os Cursos que esse Funcionário está relacionado" });
+            ViewBag.Cursos = new MultiSelectList(cursos, "Id", "Nome");
+
             return View(funcionario);
         }
         // GET: Funcionario/Edit/5
@@ -107,19 +131,20 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            var Funcionario = await _context.Funcionarios.SingleOrDefaultAsync(m => m.Id == id);
-            if (Funcionario == null)
+            var funcionario = await _context.Funcionarios.SingleOrDefaultAsync(m => m.Id == id);
+            if (funcionario == null)
             {
                 return NotFound();
             }
-            ViewBag.Perfis = _context.Perfis.OrderBy(i => i.Nivel).ToList();
-            ViewBag.Contratos = _context.Contratos.OrderBy(i => i.Tipo).ToList();
-            return View(Funcionario);
+            ViewBag.Perfis = new SelectList(_context.Perfis.OrderBy(i => i.Nivel), "Id", "Nivel", funcionario.IdPerfil);
+            ViewBag.Contratos = new SelectList(_context.Contratos.OrderBy(i => i.Tipo), "Id", "Tipo", funcionario.IdContrato);
+            ViewBag.Cursos = new MultiSelectList(_context.Cursos.OrderBy(c => c.Nome), "Id", "Nome");
+            return View(funcionario);
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("Id", "NomeCompleto", "Email", "Senha", "ConfirmarSenha", "IdPerfil", "IdContrato", "Horario", "CargaHorariaSemanal")] Funcionario funcionario)
+        public async Task<IActionResult> Edit(long? id, [Bind("Id", "NomeCompleto", "Email", "Senha", "ConfirmarSenha", "IdPerfil", "IdContrato", "Horario", "CargaHorariaSemanal")] Funcionario funcionario, int[] Idcursos)
         {
             if (id != funcionario.Id)
             {
@@ -131,14 +156,26 @@ namespace Tcc_Senai.Controllers
                 {
                     _context.Update(funcionario);
                     await _context.SaveChangesAsync();
+
+                    deleteFuncionarioCurso(funcionario.Id);
+
+                    var currentFuncionario = _context.Funcionarios.Where(f => f.Id.Equals(id)).SingleOrDefault();
+
+                    foreach (var curso in Idcursos)
+                    {
+                        FuncionarioCurso funcionarioCurso = new FuncionarioCurso();
+                        funcionarioCurso.IdCurso = curso;
+                        funcionarioCurso.IdFunc = currentFuncionario.Id;
+                        _context.Add(funcionarioCurso);
+                        await _context.SaveChangesAsync();
+                    }
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!FuncionarioExists(funcionario.Id))
                     {
                         NotFound();
-
-
                         return NotFound();
                     }
                     else
@@ -148,6 +185,9 @@ namespace Tcc_Senai.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Perfis = new SelectList(_context.Perfis.OrderBy(i => i.Nivel), "Id", "Nivel", funcionario.IdPerfil);
+            ViewBag.Contratos = new SelectList(_context.Contratos.OrderBy(i => i.Tipo), "Id", "Tipo", funcionario.IdContrato);
+            ViewBag.Cursos = new MultiSelectList(_context.Cursos.OrderBy(c => c.Nome), "Id", "Nome");
             return View(funcionario);
         }
         private bool FuncionarioExists(long? id)
@@ -175,10 +215,35 @@ namespace Tcc_Senai.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id)
         {
+            deleteFuncionarioCurso(id);
             var Funcionario = await _context.Funcionarios.SingleOrDefaultAsync(m => m.Id == id);
             _context.Funcionarios.Remove(Funcionario);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public bool haveFuncionario(Funcionario funcionario)
+        {
+            var have = _context.Funcionarios.Where(f => f.Email.Equals(funcionario.Email)).SingleOrDefault();
+            if (have != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool deleteFuncionarioCurso(long? id)
+        {
+            var fcs = _context.FuncionarioCursos.Where(f => f.IdFunc.Equals(id)).ToList();
+            foreach (var fc in fcs)
+            {
+                _context.FuncionarioCursos.Remove(fc);
+                _context.SaveChanges();
+            }
+            return true;
         }
     }
 }

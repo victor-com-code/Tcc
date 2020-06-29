@@ -31,5 +31,7 @@ namespace Tcc_Senai.Models
         [Required(ErrorMessage = "O campo Semestre é obrigatório.")]
         [Display(Name = "Semestre")]
         public string Semestre { get; set; }
+
+        public virtual ICollection<Aula> Aulas { get; set; }
     }
 }

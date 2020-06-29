@@ -17,5 +17,7 @@ namespace Tcc_Senai.Models
         public string Nome{ get; set;}
         public List<CursoUnidadeCurricular> CursoUnidadeCurriculares { get; set; }
 
+        public virtual ICollection<Aula> Aulas { get; set; }
+
     }
 }

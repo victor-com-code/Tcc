@@ -54,9 +54,7 @@ namespace Tcc_Senai.Models
         public int? CargaHorariaSemanal { get; set; }
 
         public List<FuncionarioCurso> FuncionarioCursos { get; set; }
-
-        // Falta Perfil
-
-        // Falta Contrato
+        
+        public virtual ICollection<Aula> Aulas { get; set; }
     }
 }
