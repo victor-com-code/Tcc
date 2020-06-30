@@ -19,6 +19,42 @@ namespace Tcc_Senai.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Tcc_Senai.Models.Aula", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("HorarioFim")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("HorarioInicio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("IdFunc")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IdTurma")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IdUc")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdFunc");
+
+                    b.HasIndex("IdTurma");
+
+                    b.HasIndex("IdUc");
+
+                    b.ToTable("Aulas");
+                });
+
             modelBuilder.Entity("Tcc_Senai.Models.Contrato", b =>
                 {
                     b.Property<long>("Id")
@@ -138,11 +174,11 @@ namespace Tcc_Senai.Migrations
 
             modelBuilder.Entity("Tcc_Senai.Models.FuncionarioCurso", b =>
                 {
-                    b.Property<int>("IdCurso")
-                        .HasColumnType("int");
+                    b.Property<long>("IdCurso")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("IdFunc")
-                        .HasColumnType("int");
+                    b.Property<long>("IdFunc")
+                        .HasColumnType("bigint");
 
                     b.Property<long?>("CursoId")
                         .HasColumnType("bigint");
@@ -238,6 +274,27 @@ namespace Tcc_Senai.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UnidadeCurriculares");
+                });
+
+            modelBuilder.Entity("Tcc_Senai.Models.Aula", b =>
+                {
+                    b.HasOne("Tcc_Senai.Models.Funcionario", "Funcionario")
+                        .WithMany("Aulas")
+                        .HasForeignKey("IdFunc")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tcc_Senai.Models.Turma", "Turma")
+                        .WithMany("Aulas")
+                        .HasForeignKey("IdTurma")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tcc_Senai.Models.UnidadeCurricular", "UnidadeCurricular")
+                        .WithMany("Aulas")
+                        .HasForeignKey("IdUc")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Tcc_Senai.Models.Curso", b =>

@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tcc_Senai.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -165,8 +166,8 @@ namespace Tcc_Senai.Migrations
                 name: "FuncionarioCursos",
                 columns: table => new
                 {
-                    IdCurso = table.Column<int>(nullable: false),
-                    IdFunc = table.Column<int>(nullable: false),
+                    IdCurso = table.Column<long>(nullable: false),
+                    IdFunc = table.Column<long>(nullable: false),
                     CursoId = table.Column<long>(nullable: true),
                     FuncionarioId = table.Column<long>(nullable: true)
                 },
@@ -186,6 +187,57 @@ namespace Tcc_Senai.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Aulas",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdTurma = table.Column<long>(nullable: false),
+                    Data = table.Column<DateTime>(nullable: false),
+                    HorarioInicio = table.Column<DateTime>(nullable: false),
+                    HorarioFim = table.Column<DateTime>(nullable: false),
+                    IdUc = table.Column<long>(nullable: false),
+                    IdFunc = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Aulas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Aulas_Funcionarios_IdFunc",
+                        column: x => x.IdFunc,
+                        principalTable: "Funcionarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Aulas_Turmas_IdTurma",
+                        column: x => x.IdTurma,
+                        principalTable: "Turmas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Aulas_UnidadeCurriculares_IdUc",
+                        column: x => x.IdUc,
+                        principalTable: "UnidadeCurriculares",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Aulas_IdFunc",
+                table: "Aulas",
+                column: "IdFunc");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Aulas_IdTurma",
+                table: "Aulas",
+                column: "IdTurma");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Aulas_IdUc",
+                table: "Aulas",
+                column: "IdUc");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cursos_IdMod",
@@ -230,6 +282,9 @@ namespace Tcc_Senai.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Aulas");
+
             migrationBuilder.DropTable(
                 name: "CursoUnidadeCurriculares");
 
