@@ -91,8 +91,16 @@ namespace Tcc_Senai.Controllers
             {
                 return NotFound();
             }
-            ViewBag.Modalidades = new SelectList(_context.Modalidades.OrderBy(b => b.Nome), "Id", "Nome", curso.IdMod);
-            ViewBag.Unidades = new MultiSelectList(_context.UnidadeCurriculares.OrderBy(u => u.Nome), "Id", "Nome");
+            var ucSelecionada = _context.CursoUnidadeCurriculares.Where(c => c.IdCurso == id).ToList();
+            List<int> selecionadas = new List<int>();
+
+            foreach (var s in ucSelecionada)
+            {
+                selecionadas.Add(Convert.ToInt32(s.IdUc));
+            }
+
+            ViewBag.Modalidades = new SelectList(_context.Modalidades.OrderBy(b => b.Nome), "Id", "Nome", curso.IdMod);         
+            ViewBag.Unidades = new MultiSelectList(_context.UnidadeCurriculares.OrderBy(u => u.Nome), "Id", "Nome", selecionadas);
             return View(curso);
         }
 
