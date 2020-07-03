@@ -22,7 +22,7 @@ namespace Tcc_Senai.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Funcionarios.OrderBy(c =>
+            return View(await _context.Funcionarios.Include(f => f.Perfil).Include(f => f.Contrato).OrderBy(c =>
             c.NomeCompleto).ToListAsync());
         }
 
