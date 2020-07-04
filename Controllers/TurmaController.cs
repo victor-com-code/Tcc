@@ -164,5 +164,15 @@ namespace Tcc_Senai.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        // GET Cronograma
+        public IActionResult Cronograma(long? id)
+        {
+            // trazendo do banco todas as aulas da turma selecionada
+            var aulas = _context.Aulas.Include(a => a.Turma).Include(u => u.UnidadeCurricular).Include(f => f.Funcionario).Where(c => c.IdTurma.Equals(id)).OrderBy(a => a.Data).ToList();
+            var turma = _context.Turmas.SingleOrDefault(t => t.Id.Equals(id));
+            ViewBag.Sigla = turma.Sigla;
+            return View(aulas);
+        }
     }
 }
