@@ -16,8 +16,14 @@ namespace Tcc_Senai.Models
         [ForeignKey("Turma")]
         public long IdTurma { get; set; }
         public Turma Turma { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime Data { get; set; }
+
+        [DataType(DataType.Time)]
         public DateTime HorarioInicio { get; set; }
+
+        [DataType(DataType.Time)]
         public DateTime HorarioFim { get; set; }
 
         [Display(Name = "Unidade Curricular")]
