@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Tcc_Senai.Models.Aula>
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+<!DOCTYPE html>
+
+@section Styles {
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"
+              asp-fallback-href="~/lib/datatables/css/jquery.dataTables.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+
+    </environment>
+}
+@if (@TempData["Message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Message"]
+    </div>
+}
+<div class="card-block">
+    <div class="card-header text-white bg-primary text-center h1">
+        Cronograma da Unidade Curricular @ViewBag.Nome
+    </div>
+    <div class="col-12 content-view">
+        <table id="tabela_aulas" class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Turma.Sigla)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HorarioInicio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HorarioFim)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Funcionario.NomeCompleto)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Turma.Sigla)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HorarioInicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HorarioFim)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Funcionario.NomeCompleto)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

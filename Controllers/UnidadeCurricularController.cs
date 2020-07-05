@@ -124,5 +124,22 @@ namespace Tcc_Senai.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        // GET
+        public async Task<IActionResult> List()
+        {
+            return View(await _context.UnidadeCurriculares.OrderBy(u =>
+            u.Nome).ToListAsync());
+        }
+
+        // GET Cronograma
+        public IActionResult Cronograma(long? id)
+        {
+            // trazendo do banco todas as aulas do funcionario selecionado
+            var aulas = _context.Aulas.Include(a => a.Turma).Include(u => u.UnidadeCurricular).Include(f => f.Funcionario).Where(f => f.IdUc.Equals(id)).OrderBy(a => a.Data).ToList();
+            var unidade = _context.UnidadeCurriculares.SingleOrDefault(t => t.Id.Equals(id));
+            ViewBag.Nome = unidade.Nome;
+            return View(aulas);
+        }
     }
 }

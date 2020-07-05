@@ -26,14 +26,17 @@ namespace Tcc_Senai.Controllers
         //GET Create
         public ActionResult Create()
         {
+            // trazendo as turmas do banco
             var turmas = _context.Turmas.OrderBy(t => t.Sigla).ToList();
             turmas.Insert(0, new Turma() { Id = 0, Sigla = "Selecione a Turma" });
             ViewBag.Turmas = turmas;
 
+            // trazendo as unidades do banco
             var unidades = _context.UnidadeCurriculares.OrderBy(u => u.Nome).ToList();
             unidades.Insert(0, new UnidadeCurricular() { Id = 0, Nome = "Selecione a Unidade Curricular" });
             ViewBag.Unidades = unidades;
 
+            // trazendo os funcionarios do banco
             var funcionarios = _context.Funcionarios.OrderBy(f => f.NomeCompleto).ToList();
             funcionarios.Insert(0, new Funcionario() { Id = 0, NomeCompleto = "Selecione o Funcionário" });
             ViewBag.Funcionarios = funcionarios;
@@ -49,6 +52,7 @@ namespace Tcc_Senai.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    // adicionando a aula ao banco
                     _context.Add(aula);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));

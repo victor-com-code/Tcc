@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Tcc_Senai.Models.UnidadeCurricular>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Unidades Curriculares</title>
+    </head>
+    <body>
+        <div class="card-header text-white bg-primary text-center h1">
+            Unidades Curriculares
+        </div>
+        <div class="col-12 content-view">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                <a asp-action="Cronograma" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="far fa-calendar-alt"></i></a>
+                            </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

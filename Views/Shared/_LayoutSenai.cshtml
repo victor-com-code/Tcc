@@ -32,7 +32,6 @@
 
     <div class="page-header page-header-light bg-info-700">
 
-
         <div class="page-header-content header-elements-md-inline header-flex">
             <div class="page-title d-flex">
                 <a href="@Url.Action("Index", "Home")" class="d-inline-block">
@@ -56,17 +55,28 @@
                     <i class="icon-paragraph-justify3"></i>
                 </a>
                 <div class="menu-links">
-                    <a href="@Url.Action("Index","Modalidade")" class="mobile-item">MODALIDADE </a>
-                    <a href="@Url.Action("Index","UnidadeCurricular")" class="mobile-item">UNIDADE CURRICULAR </a>
-                    <a href="@Url.Action("Index","Curso")" class="mobile-item">CURSO </a>
-                    <a href="@Url.Action("Index","Funcionario")" class="mobile-item">FUNCIONARIO </a>
-                    <a href="@Url.Action("Index","Turma")" class="mobile-item">TURMA </a>
-                    <a href="@Url.Action("Index","Aula")" class="mobile-item">AULA </a>
-                    @*<a href="@Url.Action("Index","Semestre")" class="mobile-item">SEMESTRE </a>*@
-                    @*<a href="@Url.Action("Index","GerarCurso")" class="mobile-item">GERAR CURSOS </a>
-        <a href="@Url.Action("Index", "Coordenador")" class="mobile-item">COORDENADOR </a>*@
+                    <a id="cadastros" class="mobile-item" href="#"><i class="fas fa-arrow-down"></i> CADASTROS</a>
+                    <div id="sub-cad" class="submenu">
+                        <a href="@Url.Action("Index","Modalidade")" class="mobile-sub-item"><i class="fas fa-paperclip"></i> MODALIDADE </a>
+                        <a href="@Url.Action("Index","UnidadeCurricular")" class="mobile-sub-item"><i class="icon-book mr-2"></i> UNIDADE CURRICULAR </a>
+                        <a href="@Url.Action("Index","Curso")" class="mobile-sub-item"><i class="fas fa-graduation-cap"></i> CURSO </a>
+                        <a href="@Url.Action("Index","Funcionario")" class="mobile-sub-item"><i class="fas fa-chalkboard-teacher"></i> FUNCIONARIO </a>
+                        <a href="@Url.Action("Index","Turma")" class="mobile-sub-item"><i class="fas fa-user-graduate"></i> TURMA </a>
+                        <a href="@Url.Action("Index","Aula")" class="mobile-sub-item"><i class="fas fa-book-reader"></i> AULA </a>
+                        @*<a href="@Url.Action("Index","Semestre")" class="mobile-item">SEMESTRE </a>*@
+                        @*<a href="@Url.Action("Index","GerarCurso")" class="mobile-item">GERAR CURSOS </a>
+                    <a href="@Url.Action("Index", "Coordenador")" class="mobile-item">COORDENADOR </a>*@
+                    </div>
+
+                    <a id="cronogramas" class="mobile-item" href="#"><i class="fas fa-arrow-down"></i> CRONOGRAMA</a>
+                    <div id="sub-cro" class="submenu">
+                        <a href="@Url.Action("List", "Funcionario")" class="mobile-sub-item"><i class="fas fa-chalkboard-teacher"></i> FUNCIONÁRIO</a>
+                        <a href="@Url.Action("List", "Modalidade")" class="mobile-sub-item"><i class="fas fa-user-graduate"></i> TURMA</a>
+                        <a href="@Url.Action("List", "UnidadeCurricular")" class="mobile-sub-item"><i class="icon-book mr-2"></i> UNIDADE CURRICULAR</a>
+                    </div>
                 </div>
             </div>
+
 
             <div class="user-icon-section">
                 <ul class="navbar-nav">
@@ -82,20 +92,20 @@
                 </ul>
             </div>
 
-           <!-- <div class="dropdown-menu dropdown-menu-right bg-info-700">
+            <!-- <div class="dropdown-menu dropdown-menu-right bg-info-700">
 
 
-                <a href="@Url.Action("MeuPerfil","Principal")" class="dropdown-item "><i class="icon-user"></i> MEU PERFIL </a>
+        <a href="@Url.Action("MeuPerfil","Principal")" class="dropdown-item "><i class="icon-user"></i> MEU PERFIL </a>
 
 
-                <a href="@Url.Action("Acesso","Register")" class="dropdown-item "><i class="icon-user-plus"></i> NOVO USUÁRIO </a>
+        <a href="@Url.Action("Acesso","Register")" class="dropdown-item "><i class="icon-user-plus"></i> NOVO USUÁRIO </a>
 
 
 
-                <a href="@Url.Action("Login","Acesso")" class="dropdown-item"><i class="icon-exit"></i> SAIR </a>
+        <a href="@Url.Action("Login","Acesso")" class="dropdown-item"><i class="icon-exit"></i> SAIR </a>
 
-                <div class="dropdown-divider mb-2 bg-white"></div>
-            </div> -->
+        <div class="dropdown-divider mb-2 bg-white"></div>
+    </div> -->
 
         </div>
     </div>
@@ -134,12 +144,12 @@
                             </font>
                     </a>
                     <div class="dropdown-menu  list bg-info-700 ">
-                        <a href="@Url.Action("Index","Modalidade")" class="dropdown-item dropdown"><i class=""></i>MODALIDADE </a>
-                        <a href="@Url.Action("Index","UnidadeCurricular")" class="dropdown-item dropdown"><i class=""></i>UNIDADE CURRICULAR </a>
-                        <a href="@Url.Action("Index","Curso")" class="dropdown-item dropdown"><i class=""></i>CURSO </a>
-                        <a href="@Url.Action("Index","Funcionario")" class="dropdown-item dropdown"><i class=""></i>FUNCIONÁRIO </a>
-                        <a href="@Url.Action("Index","Turma")" class="dropdown-item dropdown"><i class=""></i>TURMA </a>
-                        <a href="@Url.Action("Index","Aula")" class="dropdown-item dropdown"><i class=""></i>AULA </a>
+                        <a href="@Url.Action("Index","Modalidade")" class="dropdown-item dropdown"><i class="fas fa-paperclip"></i>MODALIDADE </a>
+                        <a href="@Url.Action("Index","UnidadeCurricular")" class="dropdown-item dropdown"><i class="icon-book mr-2"></i>UNIDADE CURRICULAR </a>
+                        <a href="@Url.Action("Index","Curso")" class="dropdown-item dropdown"><i class="fas fa-graduation-cap"></i>CURSO </a>
+                        <a href="@Url.Action("Index","Funcionario")" class="dropdown-item dropdown"><i class="fas fa-chalkboard-teacher"></i>FUNCIONÁRIO </a>
+                        <a href="@Url.Action("Index","Turma")" class="dropdown-item dropdown"><i class="fas fa-user-graduate"></i>TURMA </a>
+                        <a href="@Url.Action("Index","Aula")" class="dropdown-item dropdown"><i class="fas fa-book-reader"></i>AULA </a>
                         @*<a href="@Url.Action("Index","Semestre")" class="dropdown-item dropdown"><i class=""></i>SEMESTRE </a>*@
                         @*<a href="@Url.Action("Index","GerarCurso")" class="dropdown-item dropdown"><i class=""></i>GERAR CURSOS </a>
         <a href="@Url.Action("Index","Coordenador")" class="dropdown-item dropdown"><i class=""></i>COORDENADOR </a>*@
@@ -157,67 +167,16 @@
                     <a href="#" class="p-2 breadcrumb-elements-item dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <i class="text-white icon-calendar2 icon mr-2"></i><font style="vertical-align: inherit;">
                             <font style="vertical-align: inherit;">
-                                CRONOGRAMAS
+                               GERAR CRONOGRAMAS
                             </font>
                         </font>
                     </a>
                     <div class="dropdown-menu bg-info-700 ">
 
                         <div class="dropdown-submenu  bg-info-700">
-                            <a href="#" class="dropdown-item dropdown"><i class="icon-book mr-2"></i> CURSOS</a>
-
-                            <div class="dropdown-divider mb-2 bg-white"></div>
-
-                            <div class="dropdown-menu  bg-info-700">
-
-
-                                <div class="dropdown-submenu  bg-info-700">
-                                    <a href="#" class="dropdown-item dropdown-toggle">TÉCNICO</a>
-                                    <div class="dropdown-menu  bg-info-700">
-                                        <a href="#" class="dropdown-item">DESENVOLVIMENTO DE SISTEMAS</a>
-                                        <a href="#" class="dropdown-item">ALIMENTOS</a>
-                                        <a href="#" class="dropdown-item">LOGÍSTICA</a>
-                                        <a href="#" class="dropdown-item">SEGURANÇA DO TRABALHO</a>
-                                        <a href="#" class="dropdown-item">ADMINISTRAÇÃO</a>
-
-                                        <div class="dropdown-divider mb-2 bg-white"></div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-submenu  bg-info-700">
-                                    <a href="#" class="dropdown-item dropdown-toggle">APRENDIZAGEM</a>
-                                    <div class="dropdown-menu  bg-info-700">
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <div class="dropdown-divider mb-2 bg-white"></div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-submenu  bg-info-700">
-                                    <a href="#" class="dropdown-item dropdown-toggle">QUALIFICAÇÃO</a>
-                                    <div class="dropdown-menu bg-info-700 ">
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <div class="dropdown-divider mb-2 bg-white"></div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-submenu  bg-info-700">
-                                    <a href="#" class="dropdown-item dropdown-toggle">APERFEIÇOAMENTO</a>
-                                    <div class="dropdown-menu  bg-info-700">
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <a href="#" class="dropdown-item">----------------------------------------------</a>
-                                        <div class="dropdown-divider mb-2 bg-white"></div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-divider mb-2 bg-white"></div>
-
-                            </div>
+                            <a href="@Url.Action("List", "Funcionario")" class="dropdown-item dropdown"><i class="fas fa-chalkboard-teacher"></i> FUNCIONÁRIO</a>
+                            <a href="@Url.Action("List", "Modalidade")" class="dropdown-item dropdown"><i class="fas fa-user-graduate"></i> TURMA</a>
+                            <a href="@Url.Action("List", "UnidadeCurricular")" class="dropdown-item dropdown"><i class="icon-book mr-2"></i> UNIDADE CURRICULAR</a>
                         </div>
 
                     </div>
@@ -230,7 +189,7 @@
 
 
 
-
+   
 
 
 

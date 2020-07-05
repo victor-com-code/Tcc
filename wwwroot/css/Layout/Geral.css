@@ -13,14 +13,31 @@
     display: none;
 }
 
+.submenu {
+    margin-left: 20px;
+}
+
+#sub-cro, #sub-cad {
+    display: none;
+}
+
 /*  nav menu links */
 .mobile-item {
-     color: white;
-     padding: 14px 16px;
-     text-decoration: none;
-     font-size: 17px;
-     display: block;
-     border-bottom: 1px solid #fff;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+    border-bottom: 1px solid #fff;
+}
+
+.mobile-sub-item {
+    color: white;
+    padding: 10px 14px;
+    text-decoration: none;
+    font-size: 11px;
+    display: block;
+    border-bottom: 1px solid #fff;
 }
 
 /* Style the Hamburguer*/

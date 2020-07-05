@@ -124,6 +124,7 @@ namespace Tcc_Senai.Controllers
 
             return View(funcionario);
         }
+
         // GET: Funcionario/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
@@ -157,6 +158,8 @@ namespace Tcc_Senai.Controllers
                     _context.Update(funcionario);
                     await _context.SaveChangesAsync();
 
+                    // Deletando os registros ligados a esse funcionario na tabela FuncionarioCurso, é necessário fazer essa
+                    // exclusão por não haver possibilidade de alterar registros de uma tabela associativa 
                     deleteFuncionarioCurso(funcionario.Id);
 
                     var currentFuncionario = _context.Funcionarios.Where(f => f.Id.Equals(id)).SingleOrDefault();
@@ -210,16 +213,36 @@ namespace Tcc_Senai.Controllers
             }
             return View(Funcionario);
         }
+
         // POST: Funcionario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id)
         {
+            // Deletando os registros ligados a esse funcionario na tabela FuncionarioCurso
             deleteFuncionarioCurso(id);
+
             var Funcionario = await _context.Funcionarios.SingleOrDefaultAsync(m => m.Id == id);
             _context.Funcionarios.Remove(Funcionario);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // GET List, view semelhante a Index, porém sem opções de DML
+        public async Task<IActionResult> List()
+        {
+            return View(await _context.Funcionarios.Include(f => f.Perfil).Include(f => f.Contrato).OrderBy(c =>
+            c.NomeCompleto).ToListAsync());
+        }
+
+        // GET Cronograma
+        public IActionResult Cronograma(long? id)
+        {
+            // trazendo do banco todas as aulas do funcionario selecionado
+            var aulas = _context.Aulas.Include(a => a.Turma).Include(u => u.UnidadeCurricular).Include(f => f.Funcionario).Where(f => f.IdFunc.Equals(id)).OrderBy(a => a.Data).ToList();
+            var funcionario = _context.Funcionarios.SingleOrDefault(t => t.Id.Equals(id));
+            ViewBag.Nome = funcionario.NomeCompleto;
+            return View(aulas);
         }
 
         public bool haveFuncionario(Funcionario funcionario)
