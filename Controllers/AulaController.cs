@@ -17,6 +17,7 @@ namespace Tcc_Senai.Controllers
         {
             this._context = context;
         }
+
         //GET Index
         public async Task<IActionResult> Index()
         {
@@ -52,10 +53,16 @@ namespace Tcc_Senai.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // adicionando a aula ao banco
-                    _context.Add(aula);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    // se não houver aula na data e horário passados, insere a aula no banco
+                    if (!haveAulaT(aula, null) && !haveAulaF(aula, null))
+                    {
+                        // adicionando a aula ao banco
+                        _context.Add(aula);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                    ViewData["MSG_ERR"] = "Erro! Já existe uma aula cadastrada nessa data e coincidente com este horário";
+                   
                 }
             }
             catch (Exception)
@@ -96,31 +103,40 @@ namespace Tcc_Senai.Controllers
             }
             if (ModelState.IsValid)
             {
-                try
+                if (!haveAulaT(aula, id) && !haveAulaF(aula, id))
                 {
-                    _context.Update(aula);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbException)
-                {
+                    try
+                    {
+                        _context.Update(aula);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbException)
+                    {
 
-                    if (!AulaExists(aula.Id))
-                    {
-                        NotFound();
-                        return NotFound();
+                        if (!AulaExists(aula.Id))
+                        {
+                            NotFound();
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
-                    else
-                    {
-                        throw;
-                    }
+                    return RedirectToAction(nameof(Index));
+
                 }
-                return RedirectToAction(nameof(Index));
+                else
+                {
+                    ViewData["MSG_ERR"] = "Erro! Já existe uma aula cadastrada nessa data e coincidente com este horário";
+                }  
             }
             ViewBag.Turmas = _context.Turmas.OrderBy(t => t.Sigla).ToList();
             ViewBag.Unidades = _context.UnidadeCurriculares.OrderBy(u => u.Nome).ToList();
             ViewBag.Funcionarios = _context.Funcionarios.OrderBy(f => f.NomeCompleto).ToList();
             return View(aula);
         }
+
         // GET Delete
         public async Task<IActionResult> Delete(long? id)
         {
@@ -150,6 +166,60 @@ namespace Tcc_Senai.Controllers
         private bool AulaExists(long? id)
         {
             return _context.Aulas.Any(e => e.Id == id);
+        }
+
+        private bool haveAulaT(Aula newAula, long? id)
+        {
+            bool tem = false;
+            var aulas = _context.Aulas.Where(a => a.Turma.Id.Equals(newAula.IdTurma) && a.Data.Equals(newAula.Data)).AsNoTracking().ToList();
+            if (aulas != null)
+            {
+                foreach (var aula in aulas)
+                {
+                    // se os horários da turma se coincidirem, retorna verdadeiro
+                    if (aula.HorarioInicio.TimeOfDay <= newAula.HorarioFim.TimeOfDay && aula.HorarioFim.TimeOfDay >= newAula.HorarioInicio.TimeOfDay)
+                    {
+                        // se id enviado for igual ao id da aula vindo do banco e o tem for false (Usado no editar)
+                        if (id == aula.Id && tem == false)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            tem = true;
+                        }
+                    }
+                }
+            }
+            return tem;
+        }
+
+        private bool haveAulaF(Aula newAula, long? id)
+        {
+            bool tem = false;
+            var aulas = _context.Aulas.Where(a => a.Funcionario.Id.Equals(newAula.IdFunc) && a.Data.Equals(newAula.Data)).AsNoTracking().ToList();
+            
+            // Se a consulta do funcionario não estiver nula, entra na condição
+            if (aulas != null)
+            {
+                foreach (var aula in aulas)
+                {
+                    // se os horários do funcionario se coincidirem, retorna verdadeiro
+                    if (aula.HorarioInicio.TimeOfDay <= newAula.HorarioFim.TimeOfDay && aula.HorarioFim.TimeOfDay >= newAula.HorarioInicio.TimeOfDay)
+                    {
+                        // se id enviado for igual ao id da aula vindo do banco e o tem for false (Usado no editar)
+                        if (id == aula.Id && tem == false)
+                        {
+                            continue;
+                        }   
+                        else
+                        {
+                            tem = true;
+                        }
+                    }
+                }
+            }
+            return tem;
         }
     }
 }

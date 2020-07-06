@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Tcc_Senai.Models.Curso>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSenai.cshtml";
+}
+
+@section Styles {
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css"
+              asp-fallback-href="~/lib/datatables/css/jquery.dataTables.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+
+    </environment>
+}
+@if (@TempData["Message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Message"]
+    </div>
+}
+<div class="card-block">
+    <div class="card-header text-white bg-primary text-center h1">
+        Cursos
+    </div>
+    <div class="col-12 content-view">
+        <table id="tabela_cursos" class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Modalidade.Nome)
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CargaHoraria)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sigla)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modalidade.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CargaHoraria)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sigla)
+                        </td>
+
+                        <td>
+                            <a asp-action="List" asp-controller="Turma" asp-route-id="@item.Id" class="i-font-20 icone-link"><i class="far fa-calendar-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
