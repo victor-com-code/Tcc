@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200705194700_Segundo.cs" />
+    <Compile Remove="Migrations\20200705194700_Segundo.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.3.1" />
     <PackageReference Include="datatables" Version="1.0.0" />
     <PackageReference Include="datatables.net" Version="1.10.18" />
