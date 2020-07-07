@@ -165,6 +165,13 @@ namespace Tcc_Senai.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET List
+        public async Task<IActionResult> List(long? id)
+        {
+            // trazendo do banco todas as turmas do curso selecionado na view List de Curso
+            return View(await _context.Turmas.Include(i => i.Curso).Where(t => t.IdCurso.Equals(id)).OrderBy(c => c.Sigla).ToListAsync());
+        }
+
         // GET Cronograma
         public IActionResult Cronograma(long? id)
         {

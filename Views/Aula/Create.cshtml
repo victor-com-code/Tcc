@@ -16,9 +16,9 @@
 </head>
 <body>
     <div class="container">
-        @if (ViewData["MSG_E"] != null)
+        @if (ViewData["MSG_ERR"] != null)
         {
-            <p class="alert alert-danger"> @ViewData["MSG_E"] </p>
+            <p class="alert alert-danger"> @ViewData["MSG_ERR"] </p>
         }
         <div class="col-12 col-sm-12 col-md-6 offset-md-3">
             <h2 class="title-view">Cadastrar Aula</h2>

@@ -35,6 +35,7 @@ namespace Tcc_Senai.Controllers
             
             return View();
         }
+
         //POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -176,6 +177,11 @@ namespace Tcc_Senai.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
             
+        }
+
+        public async Task<IActionResult> List()
+        {
+            return View(await _context.Cursos.Include(c => c.Modalidade).OrderBy(b => b.Nome).ToListAsync());
         }
 
         private bool CursoExists(long? id)
