@@ -85,6 +85,7 @@ namespace Tcc_Senai.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    // se não houver um funcionario com o mesmo e-mail
                     if (!haveFuncionario(funcionario))
                     {
                         _context.Add(funcionario);
@@ -92,6 +93,7 @@ namespace Tcc_Senai.Controllers
 
                         var currentFuncionario = _context.Funcionarios.Where(f => f.Email.Equals(funcionario.Email)).SingleOrDefault();
 
+                        // criando a relação Funcionario -> Curso, e populando a tabela associativa
                         foreach (var curso in Idcursos)
                         {
                             FuncionarioCurso funcionarioCurso = new FuncionarioCurso();
@@ -159,11 +161,13 @@ namespace Tcc_Senai.Controllers
                     await _context.SaveChangesAsync();
 
                     // Deletando os registros ligados a esse funcionario na tabela FuncionarioCurso, é necessário fazer essa
-                    // exclusão por não haver possibilidade de alterar registros de uma tabela associativa 
+                    // exclusão por não haver a possibilidade de alterar registros de uma tabela associativa 
                     deleteFuncionarioCurso(funcionario.Id);
 
+                    // retorna o atual funcionario
                     var currentFuncionario = _context.Funcionarios.Where(f => f.Id.Equals(id)).SingleOrDefault();
 
+                    // cria novamente a relação Funcionario -> Curso, populando a tabela associativa
                     foreach (var curso in Idcursos)
                     {
                         FuncionarioCurso funcionarioCurso = new FuncionarioCurso();
@@ -247,6 +251,7 @@ namespace Tcc_Senai.Controllers
 
         public bool haveFuncionario(Funcionario funcionario)
         {
+            // busca um funcionario existente com esse e-mail
             var have = _context.Funcionarios.Where(f => f.Email.Equals(funcionario.Email)).SingleOrDefault();
             if (have != null)
             {
