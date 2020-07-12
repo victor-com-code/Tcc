@@ -21,7 +21,7 @@ namespace Tcc_Senai.Controllers
         //GET Index
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Aulas.Include(a => a.Turma).Include(u => u.UnidadeCurricular).Include(f => f.Funcionario).OrderBy(a => a.Turma.Sigla).ToListAsync());
+            return View(await _context.Aulas.Include(a => a.Turma).Include(u => u.UnidadeCurricular).Include(f => f.Funcionario).OrderBy(a => a.Data).ToListAsync());
         }
 
         //GET Create
@@ -53,16 +53,36 @@ namespace Tcc_Senai.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // se não houver aula na data e horário passados, insere a aula no banco
-                    if (!haveAulaT(aula, null) && !haveAulaF(aula, null))
+                    // se o usuário tiver contrato intermitente e
+                    // se a data da aula não coincidir com a folga do funcionário, entra no if
+                    if (isIntermitente(aula) && dayLimit(aula))
                     {
-                        // adicionando a aula ao banco
-                        _context.Add(aula);
-                        await _context.SaveChangesAsync();
-                        return RedirectToAction(nameof(Index));
+                        ViewData["MSG_ERR"] = "Erro! A data selecionada coincide com a folga desse Funcionário!";
                     }
-                    ViewData["MSG_ERR"] = "Erro! Já existe uma aula cadastrada nessa data e coincidente com este horário";
-                   
+                    else
+                    {
+                        // se não houver aula na data e horário passados, insere a aula no banco
+                        if (!haveAulaT(aula, null) && !haveAulaF(aula, null))
+                        {
+                            // se o funcionario não ultrapassar as 10 horas de trabalho
+                            if (calculaHora(aula))
+                            {
+                                // adicionando a aula ao banco
+                                _context.Add(aula);
+                                await _context.SaveChangesAsync();
+                                return RedirectToAction(nameof(Index));
+                            }
+                            else
+                            {
+                                ViewData["MSG_ERR"] = "Erro! O Funcionário já ultrapassou o limite de horas trabalhadas no dia selecionado!";
+                            }
+                        }
+                        else
+                        {
+                            ViewData["MSG_ERR"] = "Erro! Já existe uma aula com essa turma ou com esse funcionário cadastrada nessa data e coincidente com este horário";
+                        }
+
+                    }
                 }
             }
             catch (Exception)
@@ -103,33 +123,53 @@ namespace Tcc_Senai.Controllers
             }
             if (ModelState.IsValid)
             {
-                if (!haveAulaT(aula, id) && !haveAulaF(aula, id))
+                // se o usuário tiver contrato intermitente e
+                // se a data da aula não coincidir com a folga do funcionário, entra no if
+                if (isIntermitente(aula) && dayLimit(aula))
                 {
-                    try
-                    {
-                        _context.Update(aula);
-                        await _context.SaveChangesAsync();
-                    }
-                    catch (DbException)
-                    {
-
-                        if (!AulaExists(aula.Id))
-                        {
-                            NotFound();
-                            return NotFound();
-                        }
-                        else
-                        {
-                            throw;
-                        }
-                    }
-                    return RedirectToAction(nameof(Index));
-
+                    ViewData["MSG_ERR"] = "Erro! A data selecionada coincide com a folga desse Funcionário!";
                 }
                 else
                 {
-                    ViewData["MSG_ERR"] = "Erro! Já existe uma aula cadastrada nessa data e coincidente com este horário";
-                }  
+                    // se não houver aula no mesmo dia e horário, entra no if
+                    if (!haveAulaT(aula, id) && !haveAulaF(aula, id))
+                    {
+                        // se o professor não ultrapassar o limite de horas trabalhadas por dia, entra no if
+                        if (calculaHora(aula))
+                        {
+                            try
+                            {
+                                // atualizando o banco
+                                _context.Update(aula);
+                                await _context.SaveChangesAsync();
+                            }
+                            catch (DbException)
+                            {
+
+                                if (!AulaExists(aula.Id))
+                                {
+                                    NotFound();
+                                    return NotFound();
+                                }
+                                else
+                                {
+                                    throw;
+                                }
+                            }
+                            return RedirectToAction(nameof(Index));
+
+                        }
+                        else
+                        {
+                            ViewData["MSG_ERR"] = "Erro! O Funcionário já ultrapassou o limite de horas trabalhadas no dia selecionado!";
+                        }
+                    }
+                    else
+                    {
+                        ViewData["MSG_ERR"] = "Erro! Já existe uma aula com essa turma ou com esse funcionário cadastrada nessa data e coincidente com este horário";
+                    }
+                }
+               
             }
             ViewBag.Turmas = _context.Turmas.OrderBy(t => t.Sigla).ToList();
             ViewBag.Unidades = _context.UnidadeCurriculares.OrderBy(u => u.Nome).ToList();
@@ -168,6 +208,7 @@ namespace Tcc_Senai.Controllers
             return _context.Aulas.Any(e => e.Id == id);
         }
 
+        // retorna true se o funcionario tem aula
         private bool haveAulaT(Aula newAula, long? id)
         {
             bool tem = false;
@@ -194,6 +235,7 @@ namespace Tcc_Senai.Controllers
             return tem;
         }
 
+        // retorna true se a turma tem aula
         private bool haveAulaF(Aula newAula, long? id)
         {
             bool tem = false;
@@ -220,6 +262,77 @@ namespace Tcc_Senai.Controllers
                 }
             }
             return tem;
+        }
+
+        // calcula a quantidade de horas trabalhadas
+        private bool calculaHora(Aula newAula)
+        {
+            // buscando do banco a aula no dia e com o funcionário inserido
+            var aulas = _context.Aulas.Where(a => a.Data.Equals(newAula.Data) && a.Funcionario.Id.Equals(newAula.IdFunc)).AsNoTracking().ToList();
+            
+            // quantidade de horas trabalhadas
+            var conthoras = new TimeSpan();
+            var limiteHoras = new TimeSpan(10, 00, 00);
+
+            if(aulas != null)
+            {
+                // horas da aula inserida
+                var horaAula = newAula.HorarioFim.Subtract(newAula.HorarioInicio);
+
+                foreach (var aula in aulas)
+                {
+                    conthoras += aula.HorarioFim.Subtract(aula.HorarioInicio);
+                }
+                // conforme Regra de Negócio, se ultrapassar as 10 horas de trabalho diaria, retorna false
+                if (conthoras.Add(horaAula) > limiteHoras)
+                {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        // confere no banco se o funcionario tem o contrato intermitente
+        private bool isIntermitente (Aula aula)
+        {
+            var funcionario = _context.Funcionarios.Where(f => f.Id.Equals(aula.IdFunc) && f.Contrato.Tipo.Equals("Intermitente")).SingleOrDefault();
+            if (funcionario != null)
+            {
+                return true;
+            }            
+            return false;
+        }
+
+        // Para calcular a folga do Funcionario
+        private DateTime folgaFunc(Aula aula)
+        {
+            // retorna a última aula do funcionario
+            var lastAula = _context.Aulas.Where(a => a.IdFunc.Equals(aula.IdFunc)).OrderByDescending(a => a.Data).AsNoTracking().FirstOrDefault();
+
+            // calcula a folga (7 dias, considerando final de semana)
+            var folga = lastAula.Data + new TimeSpan(7, 00, 00, 00);
+            return folga;
+        }
+
+        // retorna true se o funcionario necessita de folga
+        private bool dayLimit (Aula aula)
+        {
+            // pega a quantidade de dias diferentes trabalhado pelo funcionario
+            var days = _context.Aulas.Where(a => a.IdFunc.Equals(aula.IdFunc)).GroupBy(a => a.Data).Select(e => new { e.Key, Count = e.Count() }).ToDictionary(e => e.Key, e => e.Count).ToList();
+            
+           // conforme regra de negócio, a cada 90 dias é necessário uma folga de 5 dias para o funcionário intermitente
+            if (days.Count % 90 == 0)
+            {
+                // se a data da aula inserida for maior ou igual a data de folga, return false
+                if(aula.Data >= folgaFunc(aula))
+                {
+                    return false;
+                }
+                return true;
+            }
+            
+            return false;
         }
     }
 }

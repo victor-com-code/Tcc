@@ -45,12 +45,14 @@ namespace Tcc_Senai.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    // se não existir um curso com esse nome já cadastrado 
                     if (!haveCursos(curso)) 
                     {
                         _context.Add(curso);
                         await _context.SaveChangesAsync();
 
                         var currentCurso = _context.Cursos.Where(c => c.Nome.Equals(curso.Nome)).SingleOrDefault();
+
                         // Para cada unidade selecionada cria a relação Curso -> Unidades Curriculares
                         foreach (var ids in UnidadeId)
                         {
@@ -191,6 +193,7 @@ namespace Tcc_Senai.Controllers
 
         public bool haveCursos(Curso curso)
         {
+            // busca um curso com esse nome no banco
             var have = _context.Cursos.Where(c => c.Nome.Equals(curso.Nome)).SingleOrDefault();
             if (have != null)
             {

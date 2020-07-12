@@ -35,9 +35,16 @@ namespace Tcc_Senai.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Add(modalidade);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    if(!haveModalidade(modalidade))
+                    {
+                        _context.Add(modalidade);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        ViewData["MSG_E"] = "Já existe uma Modalidade cadastrada com esse Nome.";
+                    }
                 }
             }
             catch (DbUpdateException)
@@ -125,6 +132,19 @@ namespace Tcc_Senai.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public bool haveModalidade(Modalidade modalidade)
+        {
+            // busca uma modalidade existente com esse nome
+            var have = _context.Modalidades.Where(m => m.Nome.Equals(modalidade.Nome)).SingleOrDefault();
+            if (have != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
 
