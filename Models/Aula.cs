@@ -20,9 +20,11 @@ namespace Tcc_Senai.Models
         [DataType(DataType.Date)]
         public DateTime Data { get; set; }
 
+        [Display(Name = "Horário Início")]
         [DataType(DataType.Time)]
         public DateTime HorarioInicio { get; set; }
 
+        [Display(Name = "Horário Fim")]
         [DataType(DataType.Time)]
         public DateTime HorarioFim { get; set; }
 
